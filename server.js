@@ -33,6 +33,8 @@ app.use('/forgotpassword',require('./router/forgotPassword/forgotpassword'));
 
 app.use("/dynamic_table",require('./router/Dynamic_table/dynamic_table'));
 
+app.use("/kuku_kube",require('./router/kuku_kube/kuku_cube'));
+
 
 // app.use("/register",require('./router/afterRegister'));
 
