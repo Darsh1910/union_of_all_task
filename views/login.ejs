@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+
+
+    
+
+    <div id="form_data">
+
+        <form action="/login" name="login" method="post">
+
+            <h2>Login</h2>
+
+            <div class="flex-col"> <label for="email">Email Address</label>
+                <input type="text" name="email" id="email" placeholder="Enter Email....">
+                <div><span id="email-err"></span></div>
+            </div>
+            <div class="flex-col"><label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password....">
+            </div>
+            <div> <input type="submit" value="Login" class="submit-btn"></div>
+
+            <div>
+                <p>Create New Account ? <a href="/">Register</a></p>
+            </div>
+
+            <div>
+                <div onclick="clickHandler()" style="cursor: pointer;">Forgot Password ? </div>
+            </div>
+
+            <div class="flex-link">
+                <div><a href="" id="activation_link"></a></div>
+            </div>
+
+
+
+
+            <% let message="" ; %>
+                <% if(err !=="" ){ %>
+                    <label for="">
+                        <%= err %>
+                    </label>
+                    <% } %>
+
+
+
+
+
+        </form>
+    </div>
+
+
+    <script>
+
+        function generateSalt(keyLength) {
+            var i, salt = "", characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            var charactersLength = characters.length;
+
+            for (i = 0; i < keyLength; i++) {
+                salt += characters.substr(Math.floor((Math.random() * charactersLength) + 1), 1);
+            }
+
+
+            return salt;
+
+
+        }
+
+        function validateForm() {
+            let flag = 1;
+
+            var email = document.getElementById('email').value;
+
+            checkMail(email);
+
+            function checkMail(data) {
+                let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                str = data.value;
+                console.log(str);
+
+                if (!pattern.test(str)) {
+                    var mail_err = document.getElementById('email-err')
+                    mail_err.innerHTML = "Email is invalid !!!";
+                    mail_err.style.color = "red";
+                    return false;
+
+                }
+
+
+            }
+
+
+
+            return true;
+        }
+
+
+        function clickHandler() {
+
+            var activation_code = generateSalt(12);
+
+            var link = document.getElementById('activation_link');
+
+            var email = document.getElementById('email').value;
+
+            link.setAttribute('href', `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`);
+
+            link.innerHTML = `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`;
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+
+
+</html>

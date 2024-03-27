@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+
+
+    <h3 style="display: flex;justify-content: center;align-items: center;">Thank You For Registration</h3>
+
+    <div id="form_data">
+
+        <form action="/register/createpassword" name="verify" method="post">
+
+            <div>
+                <label for="email">Email : <%= email %></label>
+                <input type="text" name="email" id="email" value="<%= email %>" placeholder="Enter Email...." hidden> 
+            </div>
+            <div>
+                <label for="verification_code">Verification Code</label>
+                <input type="text" name="verification_code" id="verification_code"
+                    placeholder="Enter Verification Code...." value="<%= activation_code %>">
+            </div>
+            <div>
+                <input type="submit" value="Verify" class="submit-btn">
+            </div>
+
+
+            <% let message=""; %>
+            <% if(err !=="" ){ %>
+                <label for=""><%= err %></label>
+           <% } %>
+
+         
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

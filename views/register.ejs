@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <!-- 
+    <h3 style="display: flex;justify-content: center;align-items: center;">Register Yourself</h3> -->
+
+
+
+    <div id="form_data">
+
+
+
+        <form action="#" name="register">
+
+            <h2 style="color: rgb(15, 24, 33);">Registration Form</h2>
+
+
+            <div class="flex-col">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" placeholder="Enter First Name...">
+            </div>
+            <div class="flex-col">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" placeholder="Enter Last Name...">
+
+            </div>
+            <div class="flex-col">
+                <label for="email">Email Address</label>
+                <input type="text" name="email" id="email" placeholder="Enter Email....">
+                <div><span id="email-err"></span></div>
+            </div>
+
+            <div class="flex-col">
+                <label for="email">Create Password</label>
+                <input type="password" name="create_password" id="create_password" placeholder="Enter Password....">
+            </div>
+
+            <div class="flex-col">
+                <label for="email">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password"
+                    placeholder="Enter password again....">
+            </div>
+
+            <div>
+                <div class="submit-btn" onclick="clickHandler()">Submit</div>
+            </div>
+
+            <div>
+
+                <p>Already Registered ? <a href="/login">Login</a></p>
+
+            </div>
+
+             <p id="password_err"></p>
+            <p id="email_err"></p>
+            <p id="content"></p>
+
+            <div id="link" class="flex-link">
+
+                <a href="" id="activation_link"></a>
+            </div>
+
+            <% let message="" ; %>
+                <% if(err !=="" ){ %>
+                    <div>
+                        <%= err %>
+                    </div>
+                    <% } %>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+
+    </div>
+
+    <script>
+
+        let err_msg = '';
+
+        function generateSalt(keyLength) {
+            var i, salt = "", characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            var charactersLength = characters.length;
+
+            for (i = 0; i < keyLength; i++) {
+                salt += characters.substr(Math.floor((Math.random() * charactersLength) + 1), 1);
+            }
+
+
+            return salt;
+
+
+        }
+
+
+
+        async function clickHandler() {
+
+            //     let flag = 1;
+
+            //     var email = document.getElementById('email').value;
+
+            //     checkMail(email);
+
+            //     function checkMail(data) {
+            //         let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            //         str = data.value;
+            //         console.log(str);
+
+            //         if (!pattern.test(str)) {
+            //             var mail_err = document.getElementById('email-err')
+            //             mail_err.innerHTML = "Email is invalid !!!";
+            //             mail_err.style.color = "red";
+
+            //             flag = 0;
+            //         }
+
+            //     }
+
+
+            //     if(flag === 0)
+            //     {
+            //         return false;
+            //     }
+
+            //     else
+            //     {
+            //         return true;
+            //     }
+
+
+
+
+            // }
+
+            var firstname = document.getElementById('firstname').value;
+            var lastname = document.getElementById('lastname').value;
+            var email = document.getElementById('email').value;
+
+            var password = document.getElementById('create_password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
+
+
+            var email_err = document.getElementById('email_err');
+            var password_err = document.getElementById('password_err');
+
+
+            var salt = generateSalt(4);
+
+
+            var activationcode = generateSalt(12);
+
+
+            var registration_data = {
+
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                password: password,
+                salt: salt,
+                activationcode: activationcode
+
+
+            }
+
+            if(password !== confirm_password)
+            {
+                 
+               password_err.innerHTML = "password does not match ";
+               return;
+            }
+
+            password_err.innerHTML = "";
+            password_err.style.display = "none";
+
+
+
+            await fetch('/register', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(registration_data),
+
+            }).then((res) => {
+                // console.log(res);
+
+                // err_msg = res.err;
+                // console.log("eroor message "+err_msg);
+
+                return res.json();
+
+            }).then((data) => {
+
+                console.log(data.id);
+                err_msg = data.id;
+
+
+            })
+                .catch((res) => { console.log(res); })
+
+            if (err_msg == '') {
+                var data = document.getElementById('activation_link');
+
+                var content = document.getElementById('content');
+
+                content.style.color = "green";
+                content.innerHTML = "Thank You For Registration ";
+
+                data.innerHTML = `http://localhost:3000/activeUser?email=${email}&token=${activationcode}`;
+
+                data.setAttribute('href',`http://localhost:3000/activeUser?email=${email}&token=${activationcode}`);
+
+                email_err.innerHTML = "";
+                email_err.style.display ="none";
+
+
+            }
+            else
+            {
+                email_err.style.display ="";
+                email_err.innerHTML = err_msg;
+            }
+
+
+            console.log("error message :", err_msg);
+
+
+
+
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript task 1</title>
+
+    <style>
+
+
+
+        body {
+            background-color: rgb(233, 233, 235);
+        }
+
+        h2 {
+
+            text-align: center;
+            color: rgb(70, 68, 68)
+        }
+
+        h3 {
+            text-align: center;
+            color: rgb(70, 68, 68);
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        table {
+            margin: 0 auto;
+            border: 1px solid balck;
+
+
+        }
+
+        td {
+            width: 80px;
+            height: 80px;
+            color: gray;
+            border: 1px solid black;
+            color: black;
+            text-align: center;
+        }
+
+
+        .insert_col_btn {
+
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: large;
+
+        }
+
+        .remove_col_btn {
+
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: large;
+        }
+
+        .insert_row_btn {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: large;
+        }
+
+        .remove_row_btn {
+            margin-top: 0.5rem;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: large;
+
+
+        }
+
+        button {
+            background-color: rgb(158, 190, 212);
+            color: rgb(243, 248, 248);
+            border-radius: 0.5rem;
+            border: 1px solid rgb(143, 145, 146);
+        }
+
+        .cols_btn {
+            margin-left: 62%;
+            margin-bottom: 1rem;
+
+        }
+
+
+
+        .rows_btn {
+            margin-left: 35%;
+            margin-top: 1rem;
+
+        }
+
+        #table_id tr:nth-child(even)>td:nth-child(even) {
+
+            background-color: rgb(143, 147, 193);
+        }
+
+        #table_id tr:nth-child(odd)>td:nth-child(odd) {
+
+            background-color: rgb(150, 173, 228);
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <h2>Darshkumar Godhani | Emp_Id : 24DEV056 | 01/02/2024</h2>
+
+    <h3>Add Row and Col && Remove Row and Col</h3>
+
+    <div class="cols_btn">
+        <button class="insert_col_btn" onclick="addCol()">+</button>
+        <button class="remove_col_btn" onclick="removeCol()">-</button>
+
+    </div>
+
+
+
+    <table id="table_id">
+
+        <tr>
+            <td></td>
+            <td></td>
+
+        </tr>
+
+
+
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+    </table>
+
+    <div class="rows_btn">
+
+        <div><button class="insert_row_btn" onclick="addRow()">+</button></div>
+
+        <div><button class="remove_row_btn" onclick="removeRow()">-</button></div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="/dynamic_table/index.js">
+
+    </script>
+
+
+</body>
+
+</html>
