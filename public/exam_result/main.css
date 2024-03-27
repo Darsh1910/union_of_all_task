@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(255, 255, 255);
+    max-width: 1350px;
+    margin: 0 auto;
+   
+}
+th {
+    background-color: rgb(166, 188, 228);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 25px;
+}
+
+table {
+    background-color: white;
+    color: black;
+  
+}
+
+td {
+    background-color: rgb(216, 229, 240);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 20px;
+  
+}
+.main_heading {
+    font-size: 2rem;    
+    text-align: center;
+    margin-bottom: 4rem;
+    margin-top: 5rem;
+}
+
+.btn-component{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+
+.page_control {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+p{
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: black;
+}
+.first_btn {
+    background-color: rgb(185, 176, 176);
+    padding:5px;
+    border-radius: 5px;
+}
+
+.second_btn {
+    background-color: rgb(223, 204, 204);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.main-content{
+    margin-bottom: 6rem;
+    margin-top: 3rem;
+    margin: 0 auto;
+    max-width: 1250px;
+}
+
+.list {
+    padding: 10px;
+}
+
+.a-btn {
+    width: 150px;
+    height: 30px;
+    background-color: coral;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.flex-div {
+    display: flex;
+    gap: 10px;
+    margin: 2rem;
+    align-items: center;
+   
+
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+

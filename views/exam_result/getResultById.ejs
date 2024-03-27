@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+    <link rel="stylesheet" href="/exam_result/main.css">
+</head>
+
+<body>
+
+
+
+    <table class="main-content">
+
+        <tr>
+
+            <th rowspan="2">Student Id</th>
+            <th rowspan="2">Subject Type</th>
+            <th colspan="2">priliminary</th>
+            <th colspan="2">Terminal</th>
+            <th colspan="2">Final</th>
+            <th colspan="2" rowspan="2">Total</th>
+
+
+
+
+        </tr>
+
+
+
+        <tr>
+
+            <td>Practical Mark</td>
+            <td>Theory Mark</td>
+            <td>Practical Mark</td>
+            <td>Theory Mark</td>
+            <td>Practical Mark</td>
+            <td>Theory Mark</td>
+
+
+
+        </tr>
+
+        <% var arr = ['Physics','Maths','Chemistry','English','Computer', 'Hindi']; %>
+        
+  
+         <%    for(let i=0;i<result.length;i++){ %>
+            <tr>
+                <td><%= result[i].id %></td>
+                <td><%= arr[i] %></td>
+                <td><%= result[i].pr_PracticalMark %></td>
+                <td><%= result[i].pr_TheoryMark %></td>
+                <td><%= result[i].tr_PracticalMark %></td>
+                <td><%= result[i].tr_TheoryMark %></td>
+                <td><%= result[i].f_PracticalMark %></td>
+                <td><%= result[i].f_TheoryMark %></td>
+                <td><%= result[i].Total %></td>
+
+
+            </tr>
+
+           <% } %>
+
+           
+            
+             
+
+
+
+       
+
+
+     
+
+
+
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

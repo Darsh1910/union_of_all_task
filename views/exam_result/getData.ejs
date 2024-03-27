@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Data </title>
+    <link rel="stylesheet" href="/exam_result/main.css">
+</head>
+
+<body>
+
+
+    <p>Godhani Darshkumar | Employee ID: 24DEV056</p>
+
+    <p class="main_heading">User Data </p>
+
+    <p>get data order by thier name</p>
+
+
+    <div class="btn-component">
+
+        <div class="page_control">
+            <div class="page_control">
+                <div class="first_btn"><a href="/fetchData?page=1&order=<%=dateQuery%>" id="firstPage">
+                        << </a>
+                </div>
+                <div class="second_btn"><a href="/fetchData?page=<%=current_page-1 %>&order=<%=dateQuery%>" id="prev_btn">
+                        < </a>
+                </div>
+                <p id="pageNumber">
+                    <%= current_page %>
+                </p>
+
+                <div class="second_btn"><a href=<%=current_page !==10 ?
+                        `/fetchData?page=${current_page+1}&order=${dateQuery}`:'javascript:void(0)' %>
+                        id="next_btn">></a></div>
+
+
+                <div class="first_btn"><a href="/fetchData?page=10&order=<%=dateQuery%>" id="lastPage">>></a></div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="flex-div">
+
+            <a href="/fetchData" class="a-btn">Get Attendence </a>
+            <a href="/result" class="a-btn">Get Result</a>
+
+        </div>
+
+
+        <label for="dropdown">List Order : </label>
+
+        <select name="dropdown" id="dropdown" onchange="handleClick(event)">
+            <!-- <option disabled selected value>-- sort option --</option> -->
+            <option hidden>
+                <%= dateQuery %>
+            </option>
+            <option value="12,2023" class="drop-btn">DEC 2023</option>
+            <option value="01,2024" class="drop-btn">JAN 2024</option>
+            <option value="02,2024" class="drop-btn">FEB 2024</option>
+
+
+
+        </select>
+
+
+
+        <table class="main-content">
+
+
+
+            <tr>
+                <% for(let i of result){ %>
+                    <% let temp=Object.keys(i) %>
+                        <% for(let j=0;j<temp.length;j++) {%>
+                            <th>
+
+                                <div style="display: flex;gap:10px;">
+                                    <div>
+                                        <%= temp[j] %>
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;">
+                                        <a
+                                            href="/fetchData?page=<%=current_page %>&order=<%=dateQuery%>&direction=asc&orderby=<%=temp[j]%>">^</a>
+                                        <a class="rotate"
+                                            href="/fetchData?page=<%=current_page %>&order=<%=dateQuery%>&direction=desc&orderby=<%=temp[j]%>">^</a>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </th>
+
+
+
+                            <% } %>
+
+                                <% break; %>
+
+                                    <% } %>
+
+
+            </tr>
+
+
+            <% for(let i of result){ %>
+                <tr>
+                    <% let temp=Object.values(i) %>
+                        <% for(let j=0;j<temp.length;j++){ %>
+                            <td>
+                                <%= temp[j] %>
+                            </td>
+                            <% } %>
+
+                </tr>
+
+                <% } %>
+
+
+
+
+
+
+
+        </table>
+
+
+
+        <script>
+
+            function handleClick(event) {
+
+
+                // console.log(event.target.value);
+                var order = event.target.value;
+
+                location = `/fetchData?page=<%=current_page %>&order=${order}`;
+
+                console.log(location);
+
+                var selectedItem = document.querySelectorAll('.drop-btn');
+
+
+
+
+            }
+
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+</body>
+
+</html>

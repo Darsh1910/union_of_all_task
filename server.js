@@ -50,6 +50,15 @@ app.use("/getData", require('./router/dynamic_grid_view/route1'));
 // Task 6
 app.use("/delimineter_search", require('./router/delimineterSearch/getData'));
 
+// Task 7
+app.use('/fetchData',require('./router/Exam_result/fetchData'));
+app.use('/result',require('./router/Exam_result/getResult'));
+app.use('/getreportcard',require('./router/Exam_result/getReportCard'));
+
+
+
+
+
 
 
 

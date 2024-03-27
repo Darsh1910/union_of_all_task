@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Data </title>
+    <link rel="stylesheet" href="/exam_result/main.css">
+</head>
+
+<body>
+
+
+    <p>Godhani Darshkumar | Employee ID: 24DEV056</p>
+
+    <p class="main_heading">Result Data </p>
+
+
+    <div class="btn-component">
+
+        <div class="page_control">
+            <div class="page_control">
+                <div class="first_btn"><a href="/result?page=1" id="firstPage">
+                        << </a>
+                </div>
+                <div class="second_btn"><a href=<%=cur_page !==1 ? `/result?page=${cur_page-1}`:'javascript:void(0)'%>
+                        id="prev_btn">
+                        < </a>
+                </div>
+                <p id="pageNumber">
+                    <%= cur_page %>
+                </p>
+
+                <div class="second_btn"><a href=<%=cur_page !==10 ? `/result?page=${cur_page+1}`:'javascript:void(0)' %>
+                        id="next_btn">></a></div>
+
+
+                <div class="first_btn"><a href="/result?page=10" id="lastPage">>></a></div>
+
+
+            </div>
+
+        </div>
+
+        <!-- 
+        <label for="dropdown">List Order : </label>
+
+        <select name="dropdown" id="dropdown" onchange="handleClick(event)">
+             <option disabled selected value>-- sort option --</option> -->
+        <!-- <option hidden>
+                
+            </option>
+            <option value="12,2023" class="drop-btn">DEC,2023</option>
+            <option value="01,2024" class="drop-btn">JAN,2024</option>
+            <option value="02,2024" class="drop-btn">FEB,2024</option>
+
+
+
+        </select> -->
+
+
+
+
+
+
+
+        <table class="main-content">
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th colspan="2">priliminary</th>
+                <th colspan="2">Terminal</th>
+                <th colspan="2">Final</th>
+                <th colspan="2">Total</th>
+
+
+            </tr>
+
+
+            
+
+
+            <% for(let key in result){ %>
+                <tr>
+                    <td>
+                        <%= result[key].id %>
+                    </td>
+                    <td>
+                        <%= result[key].first_name %>
+                    </td>
+                    <td>
+                        <%= result[key].p_practical %>
+                    </td>
+                    <td>
+                        <%= result[key].p_theory %>
+                    </td>
+                    <td>
+                        <%= result[key].t_practical %>
+                    </td>
+                    <td>
+                        <%= result[key].t_theory %>
+                    </td>
+                    <td>
+                        <%= result[key].f_practical %>
+                    </td>
+                    <td>
+                        <%= result[key].f_theory %>
+                    </td>
+
+                    <td colspan="2">
+                        <%= result[key].Total %>
+                    </td>
+
+
+                    <td><a href="/getreportcard?id=<%=result[key].id%>">View</a></td>
+
+
+
+
+                </tr>
+                <% } %>
+
+
+
+
+
+        </table>
+
+
+
+        <script>
+
+            function handleClick(event) {
+
+
+                // console.log(event.target.value);
+                // var order = event.target.value;
+
+
+                // console.log(location);
+
+                // var selectedItem = document.querySelectorAll('.drop-btn');
+
+
+
+
+            }
+
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+</body>
+
+</html>
