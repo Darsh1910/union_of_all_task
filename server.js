@@ -56,7 +56,11 @@ app.use('/result',require('./router/Exam_result/getResult'));
 app.use('/getreportcard',require('./router/Exam_result/getReportCard'));
 
 
+// Task 8
 
+app.use("/getformdata",require('./router/job_application_form/getformdata'));
+app.use("/updateform",require('./router/job_application_form/updateForm'));
+app.use("/dataupdated",require('./router/job_application_form/update'));
 
 
 
