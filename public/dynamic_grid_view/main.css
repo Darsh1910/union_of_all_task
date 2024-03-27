@@ -1,0 +1,167 @@
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ 
+
+}
+
+.form_data {
+    display: flex;
+   
+    gap: 20px;
+}
+
+.txt-input{
+    width: 300px;
+    height: 35px;
+
+}
+
+.submit-btn{
+    height: 35px;
+    width: 50px;
+    background-color: rgb(179, 221, 255);
+    border: 1px solid rgb(179, 221, 255);
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+th {
+    background-color: rgb(166, 188, 228);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 15px;
+}
+
+table {
+    background-color: white;
+    color: black;
+  
+    
+  
+}
+
+td {
+    background-color: rgb(216, 229, 240);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 10px;
+  
+}
+
+
+.table-content{
+   
+    margin: 0 auto;
+    margin-bottom: 10rem;
+
+}
+
+form {
+    margin-bottom: 5rem;
+}
+p{
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: black;
+}
+.first_btn {
+    background-color: rgb(185, 176, 176);
+    padding:5px;
+    border-radius: 5px;
+}
+
+.second_btn {
+    background-color: rgb(223, 204, 204);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.main-content{
+    margin-bottom: 6rem;
+    margin-top: 3rem;
+    margin: 0 auto;
+    max-width: 1250px;
+}
+
+.btn-component{
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+
+.page_control {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+.search-div {
+
+    max-width: 1250px;
+    margin-left:70%;
+   
+}
+
+
+.filter-form{
+
+    max-width: 1250px;
+    margin: 0 auto;
+    
+}
+.filter-form {
+    margin-left:60%;
+}
+
+.filter-div{
+    max-width: 1250px;
+   
+    align-items: center;
+
+}
+
+#showmore-div{
+    margin-left: 80%;
+    margin-top: 2rem;
+    max-width: 1250px;
+    display: flex;
+   
+
+}
+
+#showmore {
+    color: rgb(177, 55, 15);
+    cursor: pointer;
+}
+
+#div-section{
+    
+    margin: 0 auto;
+
+  
+    margin-top: 3rem;
+
+    max-width: 1250px;
+    display: none;
+   
+
+}
+.active {
+    display: block !important;
+}

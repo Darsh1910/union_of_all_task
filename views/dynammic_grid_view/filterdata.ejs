@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/dynamic_grid_view/main.css">
+</head>
+
+<body>
+
+    <div class="filter-div">
+
+        <form action="/getbyid" method="get" class="filter-form">
+
+
+            <input type="text" name="id" placeholder="userId" tabindex="0" class="txt-input">
+            <input type="submit" value="GO" tabindex="1" class="submit-btn">
+
+
+
+        </form>
+
+
+        <div id="showmore-div">
+            <div id="showmore" onclick="showMoreBtn()">Show More</div>
+
+        </div>
+
+
+
+    </div>
+
+    <div id="div-section">
+        <form action="/getAllDetail" method="get">
+
+            <label for="f_name">First Name</label>
+            <input type="text" name="first_name">
+
+            <label for="l_name">Last Name</label>
+            <input type="text" name="last_name">
+
+
+            <label for="city">City</label>
+            <input type="text" name="city">
+
+            <select name="condition" id="">
+                <option value="and">AND</option>
+                <option value="or">OR</option>
+
+            </select>
+
+            <input type="submit" value="GO">
+
+
+        </form>
+
+    </div>
+
+
+    <div class="btn-component">
+
+        <div class="page_control">
+            <div class="first_btn"><a
+                    href="/getAllDetail?page=1&first_name=<%=first_name%>&last_name=<%=last_name%>&city=<%=city%>&condition=<%=order%>"
+                    id="firstPage">
+                    << </a>
+            </div>
+            <div class="second_btn"><a
+                    href="<%= current_page !== 1 ? `/getAllDetail?page=${current_page -1}&first_name=${first_name}&last_name=${last_name}&city${city}&condition=${order}` :`javascript:void(0)`%>"
+                    id="prev_btn">
+                    < </a>
+            </div>
+            <p id="pageNumber">
+                <%= current_page %>
+            </p>
+            <div class="second_btn"><a
+                    href="<%= current_page !== lastpage ? `/getAllDetail?page=${current_page + 1}&first_name=${first_name}&last_name=${last_name}&city${city}&condition=${order}` :`javascript:void(0)`%>"
+                    id="next_btn">></a></div>
+            <div class="first_btn"><a
+                    href="/getAllDetail?page=<%=lastpage%>&first_name=<%=first_name%>&last_name=<%=last_name%>&city=<%=city%>&condition=<%=order%>"
+                    id="lastPage">>></a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <table class="table-content">
+        <tr>
+
+            <% for(let i of result){ %>
+                <% let temp=Object.keys(i) %>
+                    <% for(let j=0;j<temp.length;j++) {%>
+                        <th>
+                            <%= temp[j] %>
+                        </th>
+
+
+                        <% } %>
+
+                            <% break; %>
+
+                                <% } %>
+
+
+        </tr>
+
+
+        <% for(let i of result){ %>
+            <tr>
+                <% let temp=Object.values(i) %>
+                    <% for(let j=0;j<temp.length;j++){ %>
+                        <td>
+                            <%= temp[j] %>
+                        </td>
+                        <% } %>
+
+            </tr>
+
+            <% } %>
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+        function showMoreBtn() {
+            var btn = document.getElementById('div-section');
+            console.log(btn);
+            btn.classList.toggle('active');
+
+
+        }
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

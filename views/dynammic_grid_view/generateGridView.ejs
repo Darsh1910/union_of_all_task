@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid view</title>
+    <link rel="stylesheet" href="/dynamic_grid_view/main.css">
+</head>
+
+<body>
+
+
+    <div style="text-align: center;margin-top: 3rem;">
+       
+        <h2>Godhani Darshkumar | Employee ID : 24DEV056 </h2>
+       
+
+
+    </div>
+
+    <div class="main-content">
+
+
+        <h3>Grid View</h3>
+
+
+        <form action="/getData" method="get" class="form_data">
+
+            <div>
+
+                <input type="text" name="input_data" id="data" class="txt-input">
+
+            </div>
+
+            <div>
+                <input type="submit" value="Go" class="submit-btn">
+            </div>
+
+
+
+
+        </form>
+
+
+    </div>
+
+    <h4 style="max-width: 1250px;margin-left: 6rem;"><%= data %></h4>
+
+
+
+    <% try {%>
+        <%- include('gridview',{result:result,current_page:current_page,input_data,lastpage:lastpage}); %>
+            <%} catch (error) { %>
+               <% console.error(error); %>
+            <% } %> 
+
+
+
+
+                <script>
+
+
+            
+
+
+
+                </script>
+
+
+
+
+
+
+</body>
+
+</html>

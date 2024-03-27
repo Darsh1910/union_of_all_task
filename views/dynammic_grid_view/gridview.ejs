@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/dynamic_grid_view/main.css">
+</head>
+
+<body>
+
+
+    <div class="btn-component">
+
+        <div class="page_control">
+            <div class="first_btn"><a href="/getData?page=1&input_data=<%=input_data%>" id="firstPage">
+                    << </a>
+            </div>
+            <div class="second_btn"><a
+                    href="<%= current_page !== 1 ? `/getData?page=${current_page -1}&input_data=${input_data}` :`javascript:void(0)`%>"
+                    id="prev_btn">
+                    < </a>
+            </div>
+            <p id="pageNumber">
+                <%= current_page %>
+            </p>
+            <div class="second_btn"><a
+                    href="<%= current_page !== lastpage ? `/getData?page=${current_page +1}&input_data=${input_data}` :`javascript:void(0)`%>"
+                    id="next_btn">></a></div>
+            <div class="first_btn"><a href="/getData?page=<%=lastpage%>&input_data=<%=input_data%>" id="lastPage">>></a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <table class="table-content">
+        <tr>
+
+            <% for(let i of result){ %>
+                <% let temp=Object.keys(i) %>
+                    <% for(let j=0;j<temp.length;j++) {%>
+                        <th>
+
+                            <div style="display: flex;gap:10px;">
+                                <div>
+                                    <%= temp[j] %>
+                                </div>
+                                <div style="display: flex;flex-direction: column;">
+                                    <a
+                                        href="/getData?page=<%=current_page %>&input_data=<%=input_data%>&order=asc&orderby=<%=temp[j]%>">^</a>
+                                    <a class="rotate"
+                                        href="/getData?page=<%=current_page %>&input_data=<%=input_data%>&order=desc&orderby=<%=temp[j]%>">^</a>
+                                </div>
+
+                            </div>
+                        </th>
+
+
+
+                        <% } %>
+
+                            <% break; %>
+
+                                <% } %>
+
+
+        </tr>
+
+
+        <% for(let i of result){ %>
+            <tr>
+                <% let temp=Object.values(i) %>
+                    <% for(let j=0;j<temp.length;j++){ %>
+                        <td>
+                            <%= temp[j] %>
+                        </td>
+                        <% } %>
+
+            </tr>
+
+            <% } %>
+
+
+
+
+
+    </table>
+
+
+    <script>
+
+        
+
+            // var search = event.target.value;
+ 
+
+
+            //    location  = location + "&search="+search;
+             
+           
+
+       
+
+
+    </script>
+
+
+</body>
+
+</html>
