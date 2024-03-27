@@ -35,6 +35,9 @@ app.use("/dynamic_table",require('./router/Dynamic_table/dynamic_table'));
 
 app.use("/kuku_kube",require('./router/kuku_kube/kuku_cube'));
 
+app.use("/tic_tac_toe",require('./router/Tic_Tac_Toe/tic_tac_toe'));
+
+
 
 // app.use("/register",require('./router/afterRegister'));
 
