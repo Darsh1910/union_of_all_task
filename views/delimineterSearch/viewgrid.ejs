@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/delimineterSearch/main.css">
+</head>
+
+<body>
+
+
+    <div class="form-container">
+
+        <form action="/delimineter_search" method="get" >
+
+            <input type="text" class="input-txt" placeholder="search data ..." name="input_data" value="<%=data%>">
+            <input type="submit" value="GO" class="btn">
+
+        </form>
+
+
+    </div>
+
+   
+
+    
+
+    <div style="margin-left: 3rem;">
+           <table>
+             <tr>
+                <td>_</td>
+                <td>first_name</td>
+             </tr>
+             <tr>
+                <td>^</td>
+                <td>last_name</td>
+             </tr>
+             <tr>
+                <td>$</td>
+                <td>email</td>
+             </tr>
+             <tr>
+                <td>{</td>
+                <td>city</td>
+             </tr>
+             <tr>
+                <td>}</td>
+                <td>country</td>
+             </tr>
+
+
+           </table>
+     
+
+    </div>
+
+    <div style="text-align: center;"><%= err %></div>
+    <table class="table-content">
+        <tr>
+            <% for(let i of result){ %>
+                <% let temp=Object.keys(i) %>
+                    <% for(let j=0;j<temp.length;j++) {%>
+                        <th>
+                            <%= temp[j] %>
+                        </th>
+
+                        <% } %>
+
+                            <% break; %>
+
+         <% } %>
+
+        </tr>
+
+
+        <% for(let i of result){ %>
+            <tr>
+                <% let temp=Object.values(i) %>
+                    <% for(let j=0;j<temp.length;j++){ %>
+                        <td>
+                            <%= temp[j] %>
+                        </td>
+                        <% } %>
+
+            </tr>
+
+            <% } %>
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

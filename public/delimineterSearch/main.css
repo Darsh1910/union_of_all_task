@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+.form-container
+{
+   text-align: center;
+   margin-top: 4rem;
+   margin-bottom: 2rem;
+
+}
+
+.table-content{
+    margin:0 auto;
+    max-width: 1250px;
+}
+
+th {
+    background-color: rgb(166, 188, 228);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 15px;
+}
+
+table {
+    background-color: white;
+    color: black;
+  
+    
+  
+}
+
+td {
+    background-color: rgb(216, 229, 240);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 10px;
+  
+}
+
+.input-txt{
+    width: 300px;
+    height: 30px;
+
+    
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: rgb(216, 229, 240);
+    border: 1px solid rgb(216, 229, 240);
+    color: black;
+    height: 30px;
+    padding:5px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}

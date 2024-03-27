@@ -44,8 +44,14 @@ app.use("/tic_tac_toe", require('./router/Tic_Tac_Toe/tic_tac_toe'));
 // Task 4
 app.use("/event_table", require('./router/event_table/event_table'));
 
-// Tassk 5
+// Task 5
 app.use("/getData", require('./router/dynamic_grid_view/route1'));
+
+// Task 6
+app.use("/delimineter_search", require('./router/delimineterSearch/getData'));
+
+
+
 
 // app.use("/getbyid",require('./router/dynamic_grid_view/getuser'));
 
