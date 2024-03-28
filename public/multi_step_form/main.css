@@ -1,0 +1,126 @@
+table {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(243, 191, 153);
+    padding: 20px;
+}
+
+input {
+    border: 1px solid rgb(235, 170, 124);
+}
+
+textarea {
+    border: 1px solid rgb(235, 170, 124);
+}
+
+select {
+    border: 1px solid rgb(235, 170, 124);
+    background-color: white;
+}
+
+h1 {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hidden {
+    display: none;
+
+}
+
+.prev-btn {
+
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+
+    background-color: rgb(165, 180, 245);
+    color: white;
+
+}
+
+.next-btn {
+
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+
+    background-color: rgb(240, 150, 86);
+    color: white;
+
+}
+
+.submit-btn {
+
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(240, 150, 86);
+    color: white;
+    margin-top: 2rem;
+
+}
+
+.btn-div {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.btn-div-basic {
+
+    margin-top: 3rem;
+    display: flex;
+    justify-content: end;
+
+}
+
+.job_btn {
+
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+
+    background-color: rgb(240, 150, 86);
+    color: white;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.submit-btn-id{
+    width: 180px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(240, 150, 86);
+    color: white;
+    margin-top: 2rem;
+}

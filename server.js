@@ -27,10 +27,6 @@ app.use("/login", require('./router/Login/loginpage'));
 
 app.use('/forgotpassword', require('./router/forgotPassword/forgotpassword'));
 
-// app.use('/forgotpassword',require('./router/forgotPassword/forgotpassword'));
-
-// app.use('*',require('./router/NotFound/notfound'));
-
 
 // Task 1
 app.use("/dynamic_table", require('./router/Dynamic_table/dynamic_table'));
@@ -61,6 +57,45 @@ app.use('/getreportcard',require('./router/Exam_result/getReportCard'));
 app.use("/getformdata",require('./router/job_application_form/getformdata'));
 app.use("/updateform",require('./router/job_application_form/updateForm'));
 app.use("/dataupdated",require('./router/job_application_form/update'));
+
+// Task 9 multi step job application form
+
+
+app.use("/form",require('./router/multi_step_form/Home'))
+
+// app.use("/updateformId",require('./router/fetchId/fetchupdateId'));
+
+app.use("/form/saveBasicDetails",require('./router/multi_step_form/saveBasicDetail'));
+app.use("/form/saveEduDetail",require('./router/multi_step_form/saveEduDetail'));
+app.use("/form/saveWorkDetail",require('./router/multi_step_form/saveWorkExperience'));
+app.use("/form/savelanguage",require('./router/multi_step_form/savelanguageknown'));
+app.use("/form/savetechnology",require('./router/multi_step_form/savetechlanguage'));
+app.use("/form/savereferences",require('./router/multi_step_form/savereference'));
+app.use("/form/savepreference",require('./router/multi_step_form/savepreferences'));
+
+
+app.use("/form/updateBasicDetail",require('./router/multi_step_form/update/updateBasicDetail'));
+app.use("/form/updateEduDetail",require('./router/multi_step_form/update/updateEduDetails'))
+app.use("/form/updateWorkDetail",require('./router/multi_step_form/update/updateWorkExperience'));
+app.use("/form/updateReferences",require('./router/multi_step_form/update/updateReferences'));
+app.use("/form/updatetechnology",require('./router/multi_step_form/update/updatetechnology'));
+app.use("/form/updatelanguage",require('./router/multi_step_form/update/updateLanguage'));
+app.use("/form/updatepreference",require('./router/multi_step_form/update/updatepreference'));
+
+
+
+// app.use("/updateformId",require('./router/fetchId/fetchupdateId'));
+
+// app.use("/updateformId",require('./router/updateForm'));
+
+// app.use("/updateform",require('./router/fetchId/fetchupdateId'));
+
+app.use("/form/updateform",require('./router/multi_step_form/updateForm'));
+
+// app.use("/updateformData",require('./router/updateForm'));
+
+// app.use("*",require('./router/multi_step_form/NotFound/Notfound'))
+
 
 
 
