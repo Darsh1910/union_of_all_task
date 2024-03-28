@@ -93,17 +93,13 @@ app.use("/form/updatepreference",require('./router/multi_step_form/update/update
 app.use("/form/updateform",require('./router/multi_step_form/updateForm'));
 
 // app.use("/updateformData",require('./router/updateForm'));
-
 // app.use("*",require('./router/multi_step_form/NotFound/Notfound'))
-
-
-
-
-
-
 // app.use("/getbyid",require('./router/dynamic_grid_view/getuser'));
-
 // app.use("/getAllDetail",require('./router/dynamic_grid_view/getAllDetail'));
+
+// Task 10
+
+app.use("/site_1",require('./router/html_site_1/site_1_api'));
 
 
 
