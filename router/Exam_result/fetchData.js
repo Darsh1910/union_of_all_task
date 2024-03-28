@@ -1,9 +1,10 @@
 const express = require('express');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 const router = express.Router();
 
 
-router.get("/", function (req, res) {
+router.get("/",verfiyToken,function (req, res) {
 
 
     var current_page = Number(req.query.page) || 1;

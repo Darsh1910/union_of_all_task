@@ -1,12 +1,13 @@
 const express = require('express');
 const getAllRecord = require('../../middleware/getAllrecord');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 const router = express.Router();
 
 
 
-router.all('/', async function (req, res) {
+router.all('/',verfiyToken, async function (req, res) {
 
 
     // taking query from parameter 

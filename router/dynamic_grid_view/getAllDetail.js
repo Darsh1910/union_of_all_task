@@ -1,10 +1,11 @@
 const express = require('express');
 const getAllRecord = require('../../middleware/getAllrecord');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 const router = express.Router();
 
-router.all("/", async function (req, res) {
+router.all("/",verfiyToken,async function (req, res) {
 
 
     var first_name = req.query.first_name;
@@ -15,7 +16,6 @@ router.all("/", async function (req, res) {
 
     var data = `select *from student_info where first_name like '%${first_name}%' ${order} last_name like 
     '%${last_name}%' ${order} city like '%${city}%'`;
-
 
 
     let current_page;

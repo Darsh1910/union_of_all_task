@@ -1,6 +1,7 @@
 const express = require('express');
 
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 
 
 
-router.get("/", (req, res) => {
+router.get("/",verfiyToken,function(req, res)  {
 
     var st_id = Number(req.query.id);
     console.log(st_id);

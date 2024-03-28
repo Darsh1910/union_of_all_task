@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const router = express.Router();
 
-router.get("/", function (req, res) {
+router.get("/",function (req, res) {
     try {
         res.render('login', { err: "" });
     } catch (error) {
@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 });
 
 
-router.post("/", function (req, res) {
+router.post("/",function (req, res) {
     try {
 
         var email = req.body.email;

@@ -1,15 +1,16 @@
 const express = require('express');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 const router = express.Router();
 
 
-router.get("/", function (req, res) {
+router.get("/",verfiyToken,function (req, res) {
     res.render('job_application_form/job_application_form_5');
 });
 
 
-router.post("/", function (req, res) {
+router.post("/",verfiyToken,function (req, res) {
     try {
 
         // console.log(req.body);

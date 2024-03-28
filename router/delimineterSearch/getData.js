@@ -1,5 +1,7 @@
 const express = require('express');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
+
 
 
 
@@ -8,7 +10,7 @@ const router = express.Router();
 
 // _ ^  $ { } :
 
-router.all("/", function (req, res) {
+router.all("/",verfiyToken, function (req, res) {
     try {
 
         let key = []

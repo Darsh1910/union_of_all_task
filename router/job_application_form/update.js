@@ -1,11 +1,12 @@
 const express = require('express');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 const router = express.Router();
 
 
 
-router.post("/", function (req, res) {
+router.post("/",verfiyToken,function (req, res) {
     try {
 
         var id = Number(req.query.id);

@@ -1,5 +1,6 @@
 const express = require('express');
 const con = require('../../database/db');
+const verfiyToken = require('../../middleware/Auth');
 
 
 
@@ -7,7 +8,7 @@ const router = express.Router();
 
 
 
-router.get("/", function (req, res) {
+router.get("/",verfiyToken,function (req, res) {
 
 
     // let userId = prompt('Enter user Id to update Data !!!');
