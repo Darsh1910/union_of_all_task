@@ -105,6 +105,11 @@ app.use("/site_1",require('./router/html_site_1/site_1_api'));
 
 app.use("/site_2",require('./router/html_site_2/site_2_api'));
 
+// Task 12
+
+app.use("/site_3",require('./router/html_site_3/site_3_api'));
+
+
 
 
 
