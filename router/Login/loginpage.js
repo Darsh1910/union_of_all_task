@@ -58,7 +58,6 @@ router.post("/", function (req, res) {
                         expires: new Date(Date.now() + 1000 * 60 * 60 * 2)
                     });
 
-
                     res.redirect('/home');
                 }
                 else {

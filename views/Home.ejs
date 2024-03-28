@@ -8,19 +8,17 @@
 </head>
 
 <style>
+    a {
+        text-decoration: none;
+    }
 
-a{
-    text-decoration: none;
-}
+    table {
+        max-width: 1200px;
+        margin: 0 auto;
 
-table
-{
-    max-width: 1200px;
-    margin: 0 auto;
+    }
 
-}
-
-/* .main-content {
+    /* .main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,28 +26,47 @@ table
     gap: 20px;
     
 } */
-/* .flex-row {
+    /* .flex-row {
     display: flex;
    
 } */
-td
-{
-    border: 1px solid black;
-    padding: 20px 40px;
-    background-color: rgb(221, 221, 250);
-}
+    td {
+        border: 1px solid rgb(221, 221, 250);
+        
+        padding: 20px 90px;
+        background-color: rgb(221, 221, 250);
+    }
 
+    .log_out_btn {
+        width: 120px;
+        height: 30px;
+        padding: 5px;
+        background-color: blanchedalmond;
+        color: black;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 2rem;
+        margin-left: 90%;
+        font-weight: 600;
+    
 
-
+    }
+      
 
 </style>
 
 <body>
+
+
+    <div>
+        <div class="log_out_btn"><a href="/logout">Log Out</a></div>
+    </div>
+
     <h1 style="text-align: center;margin-bottom: 4rem;">welcome to Home Page</h1>
 
     <table class="main-content">
 
-        <tr class="flex-row"> 
+        <tr class="flex-row">
             <td>Task 1</td>
             <td><a href="/dynamic_table" target="_blank">Dynamic Table</a></td>
 
@@ -82,7 +99,7 @@ td
         </tr>
 
 
-        <tr class="flex-row"> 
+        <tr class="flex-row">
             <td>Task 7</td>
             <td><a href="/fetchData" target="_blank"> Exam Result </a></td>
         </tr>
@@ -113,7 +130,7 @@ td
             <td><a href="/site_3" target="_blank"> Html template 3</a></td>
         </tr>
 
-        
+
 
 
 

@@ -24,6 +24,9 @@ app.use("/register", require('./router/register_data'));
 app.use("/activeUser", require('./router/Active_user/active_user'));
 
 app.use("/login", require('./router/Login/loginpage'));
+app.use("/logout",require('./router/logout'));
+
+
 
 app.use('/forgotpassword', require('./router/forgotPassword/forgotpassword'));
 
