@@ -17,7 +17,7 @@
 
     <script>
 
-       
+
         var data = window.location.href.split('/');
         // console.log(data);
         var id = data[5];
@@ -48,7 +48,7 @@
 
             innerT += "</tr>";
             innerT += "<tr>";
-        
+
             let temp1 = Object.values(result);
             console.log(result);
             for (let j = 0; j < temp1.length; j++) {
@@ -71,22 +71,30 @@
 
             var comment_data = document.getElementById('comment_btn');
 
-            var jsonComment = result_data.filter((element)=>element.postId === id);
-                  console.log("data :: "+jsonComment);
-           
-               if(jsonComment.length === 0)
-               {
-                comment_data.innerHTML = "No Comments !!!";
-               }
-               else
-               {                   
-                // comment_data.innerHTML = jsonComment[0].comment;
-                   jsonComment.forEach((element)=> {
-                    console.log(element);
-                        comment_data.innerHTML = element.body;
-                   });
+            var jsonComment = result_data.filter((element) => element.postId === id);
+            console.log("data :: " + jsonComment);
 
-               }
+            if (jsonComment.length === 0) {
+                comment_data.innerHTML = "No Comments !!!";
+            }
+            else {
+
+                var innerData = `<div>`;
+                // comment_data.innerHTML = jsonComment[0].comment;
+                jsonComment.forEach((element) => {
+
+                    console.log("elements :" + element);
+
+                    innerData += `<div>${element.body}</div>`;
+
+                });
+
+                innerData += `</div>`;
+                comment_data.innerHTML = innerData;
+
+
+
+            }
 
             // comment_data.innerHTML = result_data.comment;
             // console.log(result_data.comment);
