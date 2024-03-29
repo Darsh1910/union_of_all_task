@@ -112,17 +112,9 @@ app.use("/site_2",require('./router/html_site_2/site_2_api'));
 
 app.use("/site_3",require('./router/html_site_3/site_3_api'));
 
-
-
-
-
-
-
 app.use("/home", require('./router/home'));
 
 
 app.listen(3000, () => {
-
     console.log("server started at port 3000 !!");
-
 });
