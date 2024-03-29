@@ -1,0 +1,23 @@
+
+th {
+    background-color: rgb(166, 188, 228);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 15px;
+}
+
+table {
+    background-color: white;
+    color: black;
+  
+    
+  
+}
+
+td {
+    background-color: rgb(216, 229, 240);
+    border: 1px solid rgb(155, 185, 212);
+    color: black;
+    padding: 10px;
+  
+}

@@ -115,6 +115,11 @@ app.use("/site_3",require('./router/html_site_3/site_3_api'));
 // Task 13
 app.use("/timezone",require('./router/timezoneConverter/home'));
 
+// Task 14
+app.use("/fetch",require('./router/fetch_pagination/Home'));
+app.use("/fetch/postDetails",require('./router/fetch_pagination/getDetails'));
+
+
 
 app.use("/home", require('./router/home'));
 

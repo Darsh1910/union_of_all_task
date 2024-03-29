@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/ajax_pagination/main.css">
+</head>
+
+<body>
+
+    <h1>fetch api pagination</h1>
+
+    <div style="display: flex;gap: 20px;margin-left: 3rem;">
+
+        <div><input type="text" style="padding: 15px;" id="input_txt" placeholder="search content..."></div>
+        <div><button style="padding: 15px;background-color:darkgray;cursor: pointer;"
+                onclick="searchId()">search</button></div>
+
+    </div>
+
+
+    <div style="display: flex;gap: 15px;justify-content: center;margin-bottom: 2rem;">
+        <button onclick='leftClickLandler(headers, result, start, end)' id="leftBtn">
+            < </button>
+                <div id="pageContent">1</div>
+                <button onclick="rightClickHandler(headers, result, start, end)" id="rightBtn">></button>
+    </div>
+
+
+    <div id="table_content">
+
+    </div>
+
+    <!-- <th>Title</th><th>Author</th><th>Read?</th></tr> -->
+
+
+
+    <script>
+
+        var currentPage = 1;
+        var start = (currentPage - 1) * 10;  // 0
+        var end = currentPage * 10;  // 10
+
+        var headers;
+        var result;
+
+
+        var page = document.getElementById('pageContent');
+
+
+        fetchData();
+
+        async function fetchData() {
+            var response = await fetch("https://jsonplaceholder.typicode.com/posts");
+            result = await response.json();
+
+            console.log(Object.keys(result[0]));
+
+            headers = Object.keys(result[0]);
+            var data = Object.values(result[0]);
+
+            // console.log(result.slice(90,100));
+
+            createtable(headers, result, start, end);
+        }
+       
+
+        function searchId() {
+            var searchData = document.getElementById('input_txt').value;
+
+            var searchQuery = result.filter((obj) => { return obj.title.includes(searchData) });
+            console.log(searchQuery.length);
+            // display all data 
+            if (searchQuery.length === 0) {
+                createtable(headers, searchQuery, start, end);
+            }
+            else {
+                displaySearchData(headers, searchQuery);
+            }
+            // console.log(searchQuery);
+        }
+
+
+        function displaySearchData(headers, searchQuery) {
+
+
+            var content = document.getElementById('table_content');
+            let innerT = "";
+
+            innerT += "<table><tr class='firstRow'>";
+            for (let key in headers) {
+                innerT += "<th>" + headers[key] + "</th>";
+            }
+
+            // console.log("temp ::", start);
+            for (let i of searchQuery) {
+
+                // let resultSlice = result.slice(temp, lastData);
+                innerT += "<tr>";
+
+                let temp1 = Object.values(i);
+                console.log(temp1);
+                for (let j = 0; j < temp1.length+1; j++) {
+
+                    if (j == 5) {
+                        innerT += `<td><img src=${temp1[j]} width=100 height=100/></td>`;
+                    }
+                    // if (j == 6) {
+                    //     innerT += `<td><img src=${temp1[j]} /></td>`;
+                    // }
+                    if (j === temp1.length) {
+                        innerT += `<td><a href="/fetch/postDetails/${temp1[0]}" target="_blank"> View Post </a></td>`;
+                    }
+                    else {
+                        innerT += "<td>" + temp1[j] + "</td>";
+                    }
+                }
+                innerT += "</tr>";
+            }
+            innerT += "</table>";
+
+            // for (let key in data) {
+            //     innerT += "<td>" + data[key] + "</td>";
+            // }
+            // innerT += "</tr>";
+
+            content.innerHTML = innerT;
+        }
+
+
+        function leftClickLandler(headers, result, start, end) {
+
+            console.log("page curr before:", currentPage);
+            // if (currentPage === 1) {
+            //     document.getElementById('leftBtn').disabled = true;
+            // else
+            // {
+            //     document.getElementById('leftBtn').disabled = false;
+            // }
+
+            if ((currentPage) === 1) {
+                page.innerHTML = currentPage;
+                // currentPage = currentPage - 1;
+                start = (currentPage - 1) * 10;
+                end = currentPage * 10;
+                // console.log("curr left:", currentPage);
+                document.getElementById('leftBtn').disabled = true;
+            }
+            else {
+                if (document.getElementById('rightBtn').disabled = true) {
+                    document.getElementById('rightBtn').disabled = false;
+                }
+                document.getElementById('leftBtn').disabled = false;
+
+                console.log('before update curr ', currentPage);
+
+                page.innerHTML = currentPage - 1;
+
+                currentPage = currentPage - 1;
+
+                start = (currentPage - 1) * 10;
+                end = currentPage * 10;
+
+                // console.log("curr left:", currentPage);
+
+            }
+
+            // else
+            // {
+            //     document.getElementById('leftBtn').disabled = true;
+            // }
+            console.log("curr :: " + currentPage);
+            console.log("start " + start);
+            console.log("end " + end)
+
+            createtable(headers, result, start, end);
+            // fetchData(temp, lastData);
+        }
+
+
+
+
+
+        function rightClickHandler(headers, result, start, end) {
+
+            console.log("page curr :", currentPage);
+
+            // if (currentPage !== 10) {
+
+            //     document.getElementById('rightBtn').disabled = false;
+
+            // }
+            if ((currentPage) === 10) {
+
+                // currentPage = currentPage + 1;//2
+
+                page.innerHTML = currentPage; // 2
+
+                // console.log("curr right 10:", currentPage);
+                start = (currentPage - 1) * 10; // 10
+                end = currentPage * 10; // 20
+                document.getElementById('rightBtn').disabled = true;
+
+            }
+
+            else {
+                // document.getElementById('rightBtn').disabled = true;\]
+                if (document.getElementById('leftBtn').disabled = true) {
+                    document.getElementById('leftBtn').disabled = false;
+                }
+                document.getElementById('rightBtn').disabled = false;
+                page.innerHTML = currentPage + 1;
+                currentPage = currentPage + 1;
+
+                // console.log("curr right :", currentPage);
+                start = (currentPage - 1) * 10; // 10
+                end = currentPage * 10; // 20
+            }
+
+            // console.log("curr :: " + currentPage);
+            // console.log("start " + start);
+            // console.log("end " + end)
+            // fetchData(temp, lastData);
+            createtable(headers, result, start, end);
+
+        }
+
+
+        function createtable(headers, result, start, end) {
+
+            var content = document.getElementById('table_content');
+            let innerT = "";
+
+            innerT += "<table><tr class='firstRow'>";
+            for (let key in headers) {
+                innerT += "<th>" + headers[key] + "</th>";
+            }
+
+            // var arr;
+
+            // for(let i=0;i<10;i++)
+            // {
+            //     arr[i] = data[i];
+            // 
+            // console.log(arr);
+            // function leftClickLandler() {
+            //     if (currentPage === 1) {
+            //         document.getElementById('leftBtn').disabled = true;
+            //     }
+            // }
+
+            // console.log("temp ::", start);
+
+            // for (let i of data) {
+
+            for (let i = start; i < end; i++) {
+
+                // let resultSlice = result.slice(temp, lastData);
+                innerT += "<tr>";
+
+                console.log(result[0]);
+                let temp1 = Object.values(result[i]);
+                console.log(temp1);
+                for (let j = 0; j < temp1.length + 1; j++) {
+
+                    if (j == 5) {
+                        innerT += `<td><img src=${temp1[j]} width=100 height=100/></td>`;
+                    }
+
+                    // if (j == 6) {
+                    //     innerT += `<td><img src=${temp1[j]} /></td>`;
+                    // }
+
+                    if (j === temp1.length) {
+                        innerT += `<td><a href="/fetch/postDetails/${temp1[1]}" target="_blank"> View Post </a></td>`;
+                    }
+
+                    else {
+                        innerT += "<td>" + temp1[j] + "</td>";
+                    }
+
+                }
+
+                innerT += "</tr>";
+            }
+            innerT += "</table>";
+            // for (let key in data) {
+            //     innerT += "<td>" + data[key] + "</td>";
+            // }
+
+            // innerT += "</tr>";
+
+            content.innerHTML = innerT;
+
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

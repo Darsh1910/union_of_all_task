@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/ajax_pagination/main.css">
+</head>
+
+<body>
+    <h1>post details </h1>
+
+
+    <div id="table_content"></div>
+
+
+    <script>
+
+       
+        var data = window.location.href.split('/');
+        // console.log(data);
+        var id = data[5];
+
+        fetchData(id);
+
+        async function fetchData(id) {
+            var response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+            var result = await response.json();
+
+            var headers = Object.keys(result);
+            console.log(headers);
+            console.log(result)
+            createtable(headers, result, id);
+        }
+
+
+        function createtable(headers, result, id) {
+
+            // var table = document.createElement("table");
+            var content = document.getElementById('table_content');
+            let innerT = "";
+            console.log(headers);
+            innerT += "<table><tr class='firstRow'>";
+            for (let key in headers) {
+                innerT += "<th>" + headers[key] + "</th>";
+            }
+
+            innerT += "</tr>";
+            innerT += "<tr>";
+        
+            let temp1 = Object.values(result);
+            console.log(result);
+            for (let j = 0; j < temp1.length; j++) {
+                innerT += "<td>" + temp1[j] + "</td>";
+            }
+
+            innerT += "</tr>";
+            innerT += `<tr><td colspan=12 id="comment_btn""><button onclick="clickHandler(${temp1[0]})"  style="font-size:1.5rem;">Comments</button></td></tr>`;
+            innerT += "</table>";
+
+            content.innerHTML = innerT;
+        }
+
+        async function clickHandler(id) {
+            console.log("comments click", id);
+            var res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+            console.log(res);
+            var result_data = await res.json();
+            console.log(result_data);
+
+            var comment_data = document.getElementById('comment_btn');
+
+            var jsonComment = result_data.filter((element)=>element.postId === id);
+                  console.log("data :: "+jsonComment);
+           
+               if(jsonComment.length === 0)
+               {
+                comment_data.innerHTML = "No Comments !!!";
+               }
+               else
+               {                   
+                // comment_data.innerHTML = jsonComment[0].comment;
+                   jsonComment.forEach((element)=> {
+                    console.log(element);
+                        comment_data.innerHTML = element.body;
+                   });
+
+               }
+
+            // comment_data.innerHTML = result_data.comment;
+            // console.log(result_data.comment);
+
+        }
+    </script>
+</body>
+
+</html>
