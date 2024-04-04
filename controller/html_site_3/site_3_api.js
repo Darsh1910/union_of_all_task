@@ -6,7 +6,12 @@ const router = express.Router();
 
 
 router.get("/",verfiyToken,function(req,res){
-    res.render('kuku_kube/index');
+    try {
+        res.render('html_site_3/index');
+    } catch (error) {
+        console.error(error);
+    }
+    
 });
 
 

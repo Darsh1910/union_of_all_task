@@ -1,14 +1,18 @@
 const express = require('express');
 const verfiyToken = require('../../middleware/Auth');
 
-
 const router = express.Router();
 
-
 router.get("/",verfiyToken,function(req,res){
-    res.render('html_site_1/index');
+    try {
+        res.render('ajax_pagination/index');
+    } catch (error) {
+        console.error(error);
+    
+    }
+     
+   
+
 });
-
-
 
 module.exports = router;

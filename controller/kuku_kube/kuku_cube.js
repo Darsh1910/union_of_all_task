@@ -6,8 +6,12 @@ const router = express.Router();
 
 
 router.get("/",verfiyToken,function(req,res){
-
-    res.render('eventTable/events');
+    try {
+        res.render('kuku_kube/index');
+    } catch (error) {
+        console.error(error);
+    }
+    
 });
 
 

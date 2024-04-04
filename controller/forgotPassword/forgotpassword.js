@@ -23,8 +23,6 @@ router.get("/", function (req, res) {
         var getActionCode = `select activation_code from register where email='${email} and activation_code='${activation_code}';`;  
 
 
-    
-
     });
 
 

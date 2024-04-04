@@ -6,7 +6,13 @@ const router = express.Router();
 
 
 router.get("/",verfiyToken,function(req,res){
-    res.render('dynamicTable/index');
+    try {
+        res.render('eventTable/events');
+    } catch (error) {
+        console.error(error);
+    }
+
+    
 });
 
 

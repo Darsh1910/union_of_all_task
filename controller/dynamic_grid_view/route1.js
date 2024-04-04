@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.all('/',verfiyToken, async function (req, res) {
 
+    
+    
 
     // taking query from parameter 
 

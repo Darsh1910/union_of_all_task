@@ -10,9 +10,12 @@ const router = express.Router();
 // } 
 
 router.get("/",function(req,res){
-    res.send("Not Found Page !!!");
+    try {
+        res.render('NotFound/notfound');
+    } catch (error) {
+        
+    }
 })
-
 
 
 module.exports = router;
