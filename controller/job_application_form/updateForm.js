@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-router.get("/",verfiyToken,function (req, res) {
+function updateForm(req, res) {
 
 
     // let userId = prompt('Enter user Id to update Data !!!');
@@ -166,7 +166,7 @@ router.get("/",verfiyToken,function (req, res) {
     }
 
 
-});
+}
 
 
-module.exports = router;
+module.exports = updateForm;

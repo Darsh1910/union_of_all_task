@@ -3,7 +3,7 @@ const verfiyToken = require('../../middleware/Auth');
 
 const router = express.Router();
 
-router.get("/",verfiyToken,function(req,res){
+function ajax_task(req,res){
     try {
         res.render('ajax_pagination/index');
     } catch (error) {
@@ -13,6 +13,6 @@ router.get("/",verfiyToken,function(req,res){
      
    
 
-});
+}
 
-module.exports = router;
+module.exports = ajax_task;

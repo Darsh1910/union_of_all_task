@@ -4,7 +4,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/',function(req,res){
+function savepreferences(req,res){
     try {
         console.log("preferences :: ",req.body);
 
@@ -39,8 +39,8 @@ router.post('/',function(req,res){
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-module.exports = router;
+module.exports = savepreferences;
 

@@ -4,7 +4,7 @@ const verfiyToken = require('../../middleware/Auth');
 const router = express.Router();
 
 
-router.get("/",verfiyToken,function (req, res) {
+function getReportCard(req, res) {
     try {
 
         var getId = Number(req.query.id);
@@ -42,6 +42,6 @@ router.get("/",verfiyToken,function (req, res) {
     }
 
 
-});
+}
 
-module.exports = router;
+module.exports = getReportCard;

@@ -3,7 +3,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/',function(req,res){
+function saveWorkExperience(req,res){
     try {
          
         var id = req.body.id;
@@ -32,7 +32,7 @@ router.post('/',function(req,res){
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-module.exports = router;
+module.exports = saveWorkExperience;

@@ -4,7 +4,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/',function(req,res){
+function savereference(req,res){
     try {
         console.log("references :: ",req.body);
 
@@ -39,7 +39,7 @@ router.post('/',function(req,res){
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-module.exports = router;
+module.exports = savereference;

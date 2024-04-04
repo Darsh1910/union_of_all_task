@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.get("/", async function (req, res) {
+async function active_user(req, res) {
     try {
         console.log(req.query);
 
@@ -89,10 +89,10 @@ router.get("/", async function (req, res) {
 
 
 
-});
+}
 
 
 
 
 
-module.exports = router;
+module.exports = active_user;

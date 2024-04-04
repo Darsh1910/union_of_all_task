@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 
-router.post("/",function (req, res) {
+function updateBasicDetail(req, res) {
     try {
 
 
@@ -66,7 +66,7 @@ router.post("/",function (req, res) {
     }
 
 
-});
+}
 
 
-module.exports = router;
+module.exports = updateBasicDetail;

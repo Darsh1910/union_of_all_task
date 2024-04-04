@@ -3,11 +3,7 @@ var md5 = require('md5');
 const con = require('../database/db');
 
 
-const router = express.Router();
-
-
-
-router.post("/",async function (req, res) {
+async function register_data(req, res) {
 
     try {
 
@@ -71,7 +67,8 @@ router.post("/",async function (req, res) {
 
  
 
-});
+}
+
+module.exports = register_data;
 
 
-module.exports = router;

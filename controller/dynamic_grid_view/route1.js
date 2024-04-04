@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-router.all('/',verfiyToken, async function (req, res) {
+async function gridView(req, res) {
 
     
     
@@ -132,8 +132,8 @@ router.all('/',verfiyToken, async function (req, res) {
 
     }
 
-});
+}
 
 
 
-module.exports = router;
+module.exports = gridView;

@@ -23,7 +23,7 @@ const router = express.Router();
 
 
 
-router.get("/", verfiyToken, function (req, res) {
+function homePage(req, res) {
        try {
 
               res.render('Home');
@@ -53,7 +53,7 @@ router.get("/", verfiyToken, function (req, res) {
        //        // next();
        // }
 
-});
+}
 
 // router.get("*",function(req,res){
 
@@ -61,5 +61,5 @@ router.get("/", verfiyToken, function (req, res) {
 // });
 
 
-module.exports = router;
+module.exports = homePage;
 

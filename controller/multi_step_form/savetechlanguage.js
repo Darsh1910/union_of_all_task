@@ -4,7 +4,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/', function (req, res) {
+function savetechlanguage(req, res) {
     try {
         console.log("technology details ::", req.body);
 
@@ -74,7 +74,7 @@ router.post('/', function (req, res) {
         console.error(error);
     }
 
-});
+}
 
 
-module.exports = router;
+module.exports = savetechlanguage;

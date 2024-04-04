@@ -3,20 +3,32 @@ const express = require('express');
 
 const router = express.Router();
 
-
-
-router.get("/",function(req,res){
+function register(req,res)
+{
        try {
-              res.render('register',{err:""});
-       } catch (error) {
-              console.error(error);
-       }
+         res.render('register',{err:""});
+        } catch (error) {
+        console.error(error);
+     }
+
+}
+
+module.exports = register;
+
+
+
+// router.get("/",function(req,res){
+//        try {
+//               res.render('register',{err:""});
+//        } catch (error) {
+//               console.error(error);
+//        }
 
     
-});
+// });
 
 
-module.exports = router;
+// module.exports = router;
 
 
 

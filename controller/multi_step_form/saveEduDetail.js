@@ -4,7 +4,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/', function (req, res) {
+function saveEduDetail(req, res) {
     try {
         console.log("education data :: ", req.body);
 
@@ -64,7 +64,7 @@ router.post('/', function (req, res) {
         console.error(error);
 
     }
-});
+}
 
 
-module.exports = router;
+module.exports = saveEduDetail;

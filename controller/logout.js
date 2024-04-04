@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/",async function(req,res){
+async function logOut(req,res){
     try {
        await res.clearCookie("token");
         res.redirect("/login");
@@ -10,6 +10,6 @@ router.get("/",async function(req,res){
         console.log(error);
     }
 
-});
+}
 
-module.exports = router;
+module.exports = logOut;

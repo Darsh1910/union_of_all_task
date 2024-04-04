@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 
-router.post("/",verfiyToken,function (req, res) {
+function postUpdate(req, res) {
     try {
 
         var id = Number(req.query.id);
@@ -366,7 +366,7 @@ router.post("/",verfiyToken,function (req, res) {
     }
 
 
-});
+}
 
 
-module.exports = router;
+module.exports = postUpdate;

@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.get("/",verfiyToken,function (req, res) {
+function getResult(req, res) {
 
     try {
 
@@ -51,8 +51,8 @@ router.get("/",verfiyToken,function (req, res) {
     }
 
 
-});
+}
 
-module.exports = router;
+module.exports = getResult;
 
 

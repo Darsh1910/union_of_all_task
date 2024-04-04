@@ -7,16 +7,16 @@ require('dotenv').config();
 
 const router = express.Router();
 
-router.get("/",function (req, res) {
+function getLogin(req, res) {
     try {
         res.render('login', { err: "" });
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-router.post("/",function (req, res) {
+function postLogin(req, res) {
     try {
 
         var email = req.body.email;
@@ -82,6 +82,6 @@ router.post("/",function (req, res) {
     } catch (error) {
         console.error(error);
     }
-})
+}
 
-module.exports = router;
+module.exports = {getLogin,postLogin}

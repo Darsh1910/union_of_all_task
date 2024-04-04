@@ -6,7 +6,7 @@ const verfiyToken = require('../../../middleware/Auth');
 const router = express.Router();
 
 
-router.post('/',function (req, res) {
+function updatepreference(req, res) {
     try {
 
         var id = req.body.id;
@@ -35,7 +35,7 @@ current_ctc=?,department=? where id=${id}`;
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-module.exports = router;
+module.exports = updatepreference;

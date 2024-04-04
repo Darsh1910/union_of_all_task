@@ -4,7 +4,7 @@ var md5 = require('md5');
 const router = express.Router();
 
 
-router.get("/", function (req, res) {
+function get_forgetpassword(req, res) {
 
     var email = req.query.email;
     var activation_code = req.query.activation_code;
@@ -35,10 +35,10 @@ router.get("/", function (req, res) {
     res.render('resetpassword', { email: email });
 
 
-});
+}
 
 
-router.post("/", async function (req, res) {
+async function post_forgetpassword(req, res) {
 
     var email = req.body.email;
 
@@ -84,6 +84,6 @@ router.post("/", async function (req, res) {
 
 
 
-});
+}
 
-module.exports = router;
+module.exports = {get_forgetpassword,post_forgetpassword};

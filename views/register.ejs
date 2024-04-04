@@ -59,7 +59,7 @@
 
             </div>
 
-             <p id="password_err"></p>
+            <p id="password_err"></p>
             <p id="email_err"></p>
             <p id="content"></p>
 
@@ -129,7 +129,6 @@
             //             var mail_err = document.getElementById('email-err')
             //             mail_err.innerHTML = "Email is invalid !!!";
             //             mail_err.style.color = "red";
-
             //             flag = 0;
             //         }
 
@@ -150,6 +149,8 @@
 
 
             // }
+            let flag = 1;
+
 
             var firstname = document.getElementById('firstname').value;
             var lastname = document.getElementById('lastname').value;
@@ -181,72 +182,97 @@
 
             }
 
-            if(password !== confirm_password)
-            {
-                 
-               password_err.innerHTML = "password does not match ";
-               return;
+            if (password !== confirm_password && password === '' && confirm_password === '') {
+
+                password_err.innerHTML = "password does not match ";
+                flag = 0;
             }
 
             password_err.innerHTML = "";
             password_err.style.display = "none";
 
+            checkMail(email);
 
 
-            await fetch('/register', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(registration_data),
+            function checkMail(data) {
+                let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var str = data;
+                console.log("email value :: " + str);
+                var email_err = document.getElementById('email-err')
 
-            }).then((res) => {
-                // console.log(res);
+                if (!pattern.test(str)) {
 
-                // err_msg = res.err;
-                // console.log("eroor message "+err_msg);
+                    email_err.innerHTML = "Email is invalid !!!";
+                    flag = 0;
 
-                return res.json();
+                    console.log("flag ::", flag);
+                }
+                else {
+                    email_err.innerHTML = "";
+                    email_err.style.display = "none";
 
-            }).then((data) => {
+                }
 
-                console.log(data.id);
-                err_msg = data.id;
+            }
+
+            if (flag === 0) {
+                return;
+            }
+            else {
+
+                if (password !== "" && confirm_password !== "" && email !== "") {
+
+                    await fetch('/register', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(registration_data),
+
+                    }).then((res) => {
+                        // console.log(res);
+
+                        // err_msg = res.err;
+                        // console.log("eroor message "+err_msg);
+
+                        return res.json();
+
+                    }).then((data) => {
+
+                        console.log(data.id);
+                        err_msg = data.id;
 
 
-            })
-                .catch((res) => { console.log(res); })
+                    })
+                        .catch((res) => { console.log(res); })
 
-            if (err_msg == '') {
-                var data = document.getElementById('activation_link');
+                    if (err_msg == '') {
+                        var data = document.getElementById('activation_link');
 
-                var content = document.getElementById('content');
+                        var content = document.getElementById('content');
 
-                content.style.color = "green";
-                content.innerHTML = "Thank You For Registration ";
+                        content.style.color = "green";
+                        content.innerHTML = "Thank You For Registration ";
 
-                data.innerHTML = `http://localhost:3000/activeUser?email=${email}&token=${activationcode}`;
+                        data.innerHTML = `http://localhost:3000/activeUser?email=${email}&token=${activationcode}`;
 
-                data.setAttribute('href',`http://localhost:3000/activeUser?email=${email}&token=${activationcode}`);
+                        data.setAttribute('href', `http://localhost:3000/activeUser?email=${email}&token=${activationcode}`);
 
-                email_err.innerHTML = "";
-                email_err.style.display ="none";
+                        email_err.innerHTML = "";
+                        email_err.style.display = "none";
+
+
+                    }
+                    else {
+                        email_err.style.display = "";
+                        email_err.innerHTML = err_msg;
+                    }
+                    console.log("error message :", err_msg);
+
+                }
 
 
             }
-            else
-            {
-                email_err.style.display ="";
-                email_err.innerHTML = err_msg;
-            }
-
-
-            console.log("error message :", err_msg);
-
-
-
-
-
 
         }
 

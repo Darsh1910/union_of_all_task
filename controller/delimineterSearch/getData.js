@@ -1,16 +1,10 @@
 const express = require('express');
 const con = require('../../database/db');
 const verfiyToken = require('../../middleware/Auth');
-
-
-
-
-
-const router = express.Router();
+;
 
 // _ ^  $ { } :
-
-router.all("/",verfiyToken, function (req, res) {
+ function delimiter_search(req, res) {
     try {
 
         let key = []
@@ -147,7 +141,7 @@ router.all("/",verfiyToken, function (req, res) {
     }
 
 
-});
+}
 
 
-module.exports = router;
+module.exports = delimiter_search;

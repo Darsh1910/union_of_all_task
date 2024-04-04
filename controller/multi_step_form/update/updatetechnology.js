@@ -7,7 +7,7 @@ const verfiyToken = require('../../../middleware/Auth');
 const router = express.Router();
 
 
-router.post("/",function (req, res) {
+function updatetechnology(req, res) {
     try {
 
         console.log(req.body);
@@ -97,7 +97,7 @@ router.post("/",function (req, res) {
     }
 
 
-});
+}
 
 
-module.exports = router;
+module.exports = updatetechnology;

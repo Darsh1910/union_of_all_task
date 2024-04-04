@@ -5,15 +5,15 @@ const verfiyToken = require('../../middleware/Auth');
 const router = express.Router();
 
 
-router.get("/",verfiyToken,function(req,res){
+function dynamic_table(req,res){
     try {
         res.render('dynamicTable/index');
     } catch (error) {
         console.error(error);
     }
     
-});
+}
 
 
 
-module.exports = router;
+module.exports = dynamic_table;

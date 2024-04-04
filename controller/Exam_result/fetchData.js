@@ -4,7 +4,7 @@ const verfiyToken = require('../../middleware/Auth');
 const router = express.Router();
 
 
-router.get("/", verfiyToken, function (req, res) {
+function fetchData(req, res) {
 
     try {
 
@@ -97,6 +97,6 @@ router.get("/", verfiyToken, function (req, res) {
 
 
 
-});
+}
 
-module.exports = router;
+module.exports = fetchData;

@@ -5,12 +5,12 @@ const verfiyToken = require('../../middleware/Auth');
 const router = express.Router();
 
 
-router.get("/",verfiyToken,function (req, res) {
+function getFormData(req, res) {
     res.render('job_application_form/job_application_form_5');
-});
+}
 
 
-router.post("/",verfiyToken,function (req, res) {
+function postFormData(req, res) {
     try {
 
         // console.log(req.body);
@@ -362,7 +362,7 @@ router.post("/",verfiyToken,function (req, res) {
         console.error(error);
     }
 
-});
+}
 
 
-module.exports = router;
+module.exports = {getFormData,postFormData};

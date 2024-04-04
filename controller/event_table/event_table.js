@@ -2,10 +2,10 @@ const express = require('express');
 const verfiyToken = require('../../middleware/Auth');
 
 
-const router = express.Router();
 
 
-router.get("/",verfiyToken,function(req,res){
+
+function event_table(req,res){
     try {
         res.render('eventTable/events');
     } catch (error) {
@@ -13,8 +13,8 @@ router.get("/",verfiyToken,function(req,res){
     }
 
     
-});
+}
 
 
 
-module.exports = router;
+module.exports = event_table;

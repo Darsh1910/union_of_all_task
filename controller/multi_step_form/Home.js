@@ -6,12 +6,12 @@ const router = express.Router();
 
 
 
-router.get("/",verfiyToken,function(req,res){
+function multi_step_form(req,res){
 
        res.render('multi_step_form/index');
     
-});
+}      
 
 
-module.exports = router;
+module.exports = multi_step_form;
 

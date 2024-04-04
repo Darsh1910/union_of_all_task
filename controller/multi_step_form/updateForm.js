@@ -2,7 +2,7 @@ const express = require('express');
 const con = require('../../database/db');
 const router = express.Router();
 
-router.get('/', function (req, res) {
+ function updateForm_ajax(req, res) {
     try {
 
         console.log(req.query.id);
@@ -179,7 +179,7 @@ router.get('/', function (req, res) {
     } catch (error) {
         console.error(error);
     }
-});
+}
 
 
-module.exports = router;
+module.exports = updateForm_ajax;

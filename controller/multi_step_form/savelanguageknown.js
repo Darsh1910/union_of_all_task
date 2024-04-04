@@ -4,7 +4,7 @@ const con = require('../../database/db');
 
 const router = express.Router();
 
-router.post('/', function (req, res) {
+function savelanguageknown(req, res) {
     try {
         console.log("language known :: ", req.body);
 
@@ -94,7 +94,7 @@ router.post('/', function (req, res) {
         console.error(error);
     }
 
-});
+}
 
 
-module.exports = router;
+module.exports = savelanguageknown;
