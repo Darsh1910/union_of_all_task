@@ -2,27 +2,38 @@ const express = require('express');
 const con = require('../../database/db');
 const router = express.Router();
 
- function updateForm_ajax(req, res) {
+function updateForm_ajax(req, res) {
     try {
 
-        console.log(req.query.id);
-        
+        // console.log(req.query.id);
+
 
         // if (req.query.id === undefined) {
         //     res.send("enter valid data");
-           
+
 
         // }
+        
+        if (req.query.id == undefined || req.query.id === "") {
+            res.render('NotFound/notfound');
+            console.log("wrong input ");
+            return;
+        }
+        else {
 
             var id = Number(req.query.id);
 
-            console.log("id  ::",id);
+            console.log("id  ::", id);
 
-              retriveData(id);
+            retriveData(id);
 
-          // res.send("update page")
 
-       
+        }
+
+
+        // res.send("update page")
+
+
 
 
         // res.render('getform');
@@ -62,7 +73,7 @@ const router = express.Router();
                 preferences + language_known + tech_known, function (err, result) {
                     if (err) throw err;
 
-                    console.log("lan:: " + result[6][0].lan);
+                    // console.log("lan:: " + result[6][0].lan);
                     var Hindi_lan = [];
                     var Gujarati_lan = [];
                     var English_lan = [];
@@ -138,21 +149,12 @@ const router = express.Router();
 
                     }
 
-
-
-
-
-
                     let tech_lan_obj = {
                         "PHP": tech_lan_1,
                         "MYSQL": tech_lan_2,
                         "LARAVEL": tech_lan_3,
                         "ORACLE": tech_lan_4
                     };
-
-
-
-
 
 
 

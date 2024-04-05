@@ -11,7 +11,7 @@
 <body>
 
 
-    
+
 
     <div id="form_data">
 
@@ -25,6 +25,8 @@
             </div>
             <div class="flex-col"><label for="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter Password....">
+                <div><span id="password-err"></span></div>
+
             </div>
             <div> <input type="submit" value="Login" class="submit-btn"></div>
 
@@ -80,6 +82,28 @@
 
             var email = document.getElementById('email').value;
 
+            var password = document.getElementById('password').value;
+
+          //  Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+
+
+            checkpassword(password);
+
+            function checkpassword(password)
+            {
+               let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+               if(!pattern.test(password)){
+                 var pass_err = document.getElementById('password-err');
+                 pass_err.innerHTML ="Mimimum eight characters ";
+                 pass_err.style.color = "red";
+                 flag = 0;
+
+               }
+
+
+            }
+
             checkMail(email);
 
             function checkMail(data) {
@@ -91,16 +115,24 @@
                     var mail_err = document.getElementById('email-err')
                     mail_err.innerHTML = "Email is invalid !!!";
                     mail_err.style.color = "red";
-                    return false;
+                    flag = 0;
 
                 }
 
 
             }
 
+            if(flag === 0)
+            {
+                return false;
+            }
+            else{
+                return true;
+            }
 
 
-            return true;
+
+            
         }
 
 
@@ -111,10 +143,14 @@
             var link = document.getElementById('activation_link');
 
             var email = document.getElementById('email').value;
+            if (email !== "") {
+                link.setAttribute('href', `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`);
 
-            link.setAttribute('href', `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`);
+                link.innerHTML = `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`;
 
-            link.innerHTML = `http://localhost:3000/forgotpassword?email=${email}&activation_code=${activation_code}`;
+            }
+
+
 
         }
 

@@ -17,15 +17,12 @@ var timeout = setInterval(()=>{
 
     if(countDown==0)
     {
-        alert("time out !!!");
+        alert("Game Over !!!");
         clearInterval(timeout);
        
     }
 
     
-
-
-
 },(1000))
 
 
@@ -123,7 +120,7 @@ table_info.addEventListener('click',function(event){
 
     else
     {
-        alert("ypu clicked wrong Box !!! select correct Box ...")
+        alert("you clicked wrong Box !!! select correct Box ...")
     }
 
     
