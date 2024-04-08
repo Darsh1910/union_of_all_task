@@ -28,6 +28,7 @@ const getResult =  require('./controller/Exam_result/getResult');
 const {getFormData,postFormData} = require('./controller/job_application_form/getformdata');
 const updateForm = require('./controller/job_application_form/updateForm');
 const postUpdate = require('./controller/job_application_form/update');
+const dataUpdated = require('./controller/job_application_form/dataupdated');
 
 
 const site_1 = require('./controller/html_site_1/site_1_api');
@@ -103,7 +104,7 @@ app.route('/getreportcard').get(verfiyToken,getResult);
 
 app.route("/getformdata").get(verfiyToken,getFormData).post(verfiyToken,postFormData);
 app.route("/updateform").get(verfiyToken,updateForm);
-app.route("/dataupdated").get(verfiyToken,postUpdate);
+app.route("/dataupdated").post(verfiyToken,postUpdate);
 
 // Task 9 multi step job application form
 
@@ -163,6 +164,8 @@ app.route("/fetch/postDetails/:id").get(verfiyToken,ajax_task_detail);
 
 
 app.route("/home").get(verfiyToken,homePage);
+
+app.route("/dataupdated").get(verfiyToken,dataUpdated);
 
 
 module.exports = app;

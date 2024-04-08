@@ -34,7 +34,7 @@
                 <div style="display: flex;gap: 15px;margin-top: 2rem;">
     
                     <div>
-                        <div class="submit-btn-id" onclick="getUserId()">click Here to get Id </div>
+                        <div class="submit-btn-id-1" onclick="getUserId()">click Here to Enable Edit Mode </div>
                     </div>
             
                 </div>
@@ -830,7 +830,7 @@
                     <tr>
                         <td>
                             <% var checked_php = (tech_lan_obj.PHP.length != 0)?"checked":"" %>
-                            <input type="checkbox" name="tech_lan_1" value="PHP" <%= checked_php %>  id="tech_1" class="tech_lan_1">
+                            <input type="checkbox" name="tech_lan_1" value="PHP" <%= checked_php %>  id="tech_1" class="tech_lan_1" onclick="radiobtnHandler()">
                             <label for="tech_lan_1">PHP</label>
 
                             <input type="radio" value="beginer" name="tech_lan_1"   <%= tech_1_b %> id="tech_lan_1_B" class="tech_lan_1">
@@ -851,7 +851,7 @@
 
                         <td>
                             <% var checked_mysql = (tech_lan_obj.MYSQL.length != 0)?"checked":"" %>
-                            <input type="checkbox"  <%=checked_mysql %> name="tech_lan_2" value="MYSQL" id="tech_2" class="tech_lan_2">
+                            <input type="checkbox"  <%=checked_mysql %> name="tech_lan_2" value="MYSQL" id="tech_2" class="tech_lan_2" onclick="radiobtnHandler()">
                             <label for="tech_lan_2">MYSQL</label>
 
                             <input type="radio" <%= tech_2_b %> value="beginer" name="tech_lan_2" id="tech_lan_2_B" class="tech_lan_2">
@@ -871,7 +871,7 @@
 
                         <td>
                             <% var checked_laravel = (tech_lan_obj.LARAVEL.length != 0)?"checked":"" %>
-                            <input type="checkbox" name="tech_lan_3" value="LARAVEL"  <%= checked_laravel %> id="tech_3" class="tech_lan_3">
+                            <input type="checkbox" name="tech_lan_3" value="LARAVEL"  <%= checked_laravel %> id="tech_3" class="tech_lan_3" onclick="radiobtnHandler()">
                             <label for="tech_lan_3">LARAVEL</label>
 
                             <input type="radio" value="beginer" <%= tech_3_b %> name="tech_lan_3" id="tech_lan_3_B" class="tech_lan_3">
@@ -890,7 +890,7 @@
                     <tr>
                         <td>
                             <% var checked_oracle = (tech_lan_obj.ORACLE.length != 0)?"checked":"" %>
-                            <input type="checkbox" name="tech_lan_4" value="ORACLE" id="tech_4" <%= checked_oracle %> class="tech_lan_4">
+                            <input type="checkbox" name="tech_lan_4" value="ORACLE" id="tech_4" <%= checked_oracle %> class="tech_lan_4" onclick="radiobtnHandler()">
                             <label for="tech_lan_4">ORACLE</label>
 
                             <input type="radio" value="Beginer" name="tech_lan_4" <%= tech_4_b %> id="tech_lan_4_B" class="tech_lan_4">
@@ -1185,8 +1185,25 @@
                 
                 var gender = document.getElementById('male').checked;
             var genderType = gender ? 'male' : 'female';
+            let flag =1;
+
+
+            for (let i = 0; i < allInput.length; i++) {
+                if (allInput[i].value.trim() === "") {
+                    erro_msg[i].innerHTML = "Please fill the field !!";
+                    erro_msg[i].style.color = "red";
+                    flag = 0;
+
+                }
+                else {
+                    erro_msg[i].innerHTML = "";
+                }
+
+            }
 
                var data = document.querySelectorAll('.basic_detail');
+
+               if(flag ===1){
 
               var updatebasicDetails = {
                 id: userId,
@@ -1216,6 +1233,9 @@
          .then(function (res) { console.log(res) })
          .catch(function (res) { console.log(res) })
 
+               }
+
+
             }
 
 
@@ -1224,11 +1244,26 @@
 
                var edu_data = document.querySelectorAll('.edu_detail');
 
+                   let flag =1;
+
+                   for (let i = 0; i < allInput_edu.length; i++) {
+                        if (allInput_edu[i].value.trim() === "") {
+                           err_msg_edu[i].innerHTML = "Please fill the field !!";
+                           err_msg_edu[i].style.color = "red";
+                           flag = 0;
+
+                          }
+                        else{
+                           err_msg_edu[i].innerHTML = "";
+                            }
+
+                    }
 
 
                     console.log("length :: " + edu_data.length);
+                    if(flag ===1){
 
-                    var update_edu_details = {
+                        var update_edu_details = {
                         id:userId,
                         ssc_board: edu_data[0].value,
                         ssc_year: edu_data[1].value,
@@ -1263,6 +1298,10 @@
                         .catch(function (res) { console.log(res) })
 
 
+                    }
+
+                    
+
             }
 
             function work_experience_update()
@@ -1295,8 +1334,22 @@
 
                     }
 
+                    let flag =1;
+                    for (let i = 0; i < allInput_work.length; i++) {
+                       if (allInput_work[i].value.trim() === "") {
+                            err_msg_work[i].innerHTML = "Please fill the field !!";
+                            err_msg_work[i].style.color = "red";
+                            flag = 0;
 
-                    fetch("/form/updateWorkDetail",
+                             }
+                        else {
+                            err_msg_work[i].innerHTML = "";
+                           }
+
+                        }  
+
+                    if(flag ===1){
+                        fetch("/form/updateWorkDetail",
                         {
                             headers: {
 
@@ -1308,7 +1361,66 @@
                         .then(function (res) { console.log(res) })
                         .catch(function (res) { console.log(res) })
 
+
+                    }    
+
+
+                    
             }
+
+            function clickHandler(){
+            var lan_hindi = document.getElementById("lan_hindi").checked;
+            var lan_english = document.getElementById("lan_english").checked;
+            var lan_gujarati = document.getElementById("lan_gujarati").checked;
+
+
+            console.log(lan_hindi);
+
+            if(lan_hindi){
+                var lan_h_r = document.getElementById("lan_h_r").disabled= false;
+                var lan_h_w = document.getElementById("lan_h_w").disabled= false;
+                var lan_h_s = document.getElementById("lan_h_s").disabled= false;
+
+            }
+            else{
+                var lan_h_r = document.getElementById("lan_h_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_h_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_h_s").disabled= true;
+
+
+             }
+
+            if(lan_english)
+            {
+               var lan_h_r = document.getElementById("lan_e_r").disabled= false;
+               var lan_h_w = document.getElementById("lan_e_w").disabled= false;
+               var lan_h_s = document.getElementById("lan_e_s").disabled= false;
+
+             }
+              else
+            {
+                var lan_h_r = document.getElementById("lan_e_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_e_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_e_s").disabled= true;
+
+
+             }
+
+            if(lan_gujarati)
+            {
+                var lan_h_r = document.getElementById("lan_g_r").disabled= false;
+                var lan_h_w = document.getElementById("lan_g_w").disabled= false;
+                var lan_h_s = document.getElementById("lan_g_s").disabled= false;
+
+            }
+            else
+            {
+                var lan_h_r = document.getElementById("lan_g_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_g_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_g_s").disabled= true;
+           }
+
+}
 
             function language_update()
             {
@@ -1371,6 +1483,76 @@
 
 
             }
+
+            function radiobtnHandler(){
+
+                var tech_1 = document.getElementById("tech_1").checked;
+               var tech_2 = document.getElementById("tech_2").checked;
+               var tech_3 = document.getElementById("tech_3").checked;
+                var tech_4 = document.getElementById("tech_4").checked;
+
+             if(tech_1){
+                 var lan_h_r = document.getElementById("tech_lan_1_B").disabled= false;
+                 var lan_h_w = document.getElementById("tech_lan_1_M").disabled= false;
+                 var lan_h_s = document.getElementById("tech_lan_1_E").disabled= false;
+
+             }else{
+               var lan_h_r = document.getElementById("tech_lan_1_B").disabled= true;
+               var lan_h_w = document.getElementById("tech_lan_1_M").disabled= true;
+               var lan_h_s = document.getElementById("tech_lan_1_E").disabled= true;               
+
+               }
+
+
+             if(tech_2)
+             {
+             var lan_h_r = document.getElementById("tech_lan_2_B").disabled= false;
+             var lan_h_w = document.getElementById("tech_lan_2_M").disabled= false;
+             var lan_h_s = document.getElementById("tech_lan_2_E").disabled= false;
+
+
+             }else{
+               var lan_h_r = document.getElementById("tech_lan_2_B").disabled= true;
+              var lan_h_w = document.getElementById("tech_lan_2_M").disabled= true;
+              var lan_h_s = document.getElementById("tech_lan_2_E").disabled= true;
+
+              }
+
+
+             if(tech_3)
+             {
+             var lan_h_r = document.getElementById("tech_lan_3_B").disabled= false;
+             var lan_h_w = document.getElementById("tech_lan_3_M").disabled= false;
+             var lan_h_s = document.getElementById("tech_lan_3_E").disabled= false;
+
+
+             }else{
+             var lan_h_r = document.getElementById("tech_lan_3_B").disabled= true;
+             var lan_h_w = document.getElementById("tech_lan_3_M").disabled= true;
+             var lan_h_s = document.getElementById("tech_lan_3_E").disabled= true;
+
+             }
+
+
+            if(tech_4){
+            var lan_h_r = document.getElementById("tech_lan_4_B").disabled= false;
+            var lan_h_w = document.getElementById("tech_lan_4_M").disabled= false;
+            var lan_h_s = document.getElementById("tech_lan_4_E").disabled= false;
+
+
+            }else{
+            var lan_h_r = document.getElementById("tech_lan_4_B").disabled= true;
+            var lan_h_w = document.getElementById("tech_lan_4_M").disabled= true;
+            var lan_h_s = document.getElementById("tech_lan_4_E").disabled= true;
+
+           }
+
+
+
+
+
+} 
+
 
             function tech_language_update()
             {

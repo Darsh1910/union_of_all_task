@@ -518,14 +518,14 @@
 
                 </tr>
 
-                <div style="display: flex;gap: 15px;margin-bottom: 1.5rem;">
+                <!-- <div style="display: flex;gap: 15px;margin-bottom: 1.5rem;">
 
                     <button class="cmp_add_btn" style="padding: 5px 7px;background-color: rgb(235, 188, 128);"
                         onclick="add_company_row()">+</button>
                     <button class="cmp_remove_btn" style="padding:5px 9px;background-color: rgb(235, 188, 128);"
                         onclick="remove_company_row()">-</button>
 
-                </div>
+                </div> -->
 
 
 
@@ -647,7 +647,8 @@
 
                 <tr>
                     <td>
-                        <input type="checkbox" name="tech_lan_1" value="PHP" id="tech_1" class="tech_lan_1">
+                        <input type="checkbox" name="tech_lan_1" value="PHP" id="tech_1" class="tech_lan_1"
+                        onclick="radiobtnHandler()">
                         <label for="tech_lan_1">PHP</label>
 
                         <input type="radio" value="beginer" name="tech_lan_1" id="tech_lan_1_B" class="tech_lan_1">
@@ -667,7 +668,8 @@
                 <tr>
 
                     <td>
-                        <input type="checkbox" name="tech_lan_2" value="MYSQL" id="tech_2" class="tech_lan_2">
+                        <input type="checkbox" name="tech_lan_2" value="MYSQL" id="tech_2" class="tech_lan_2"
+                        onclick="radiobtnHandler()">
                         <label for="tech_lan_2">MYSQL</label>
 
                         <input type="radio" value="beginer" name="tech_lan_2" id="tech_lan_2_B" class="tech_lan_2">
@@ -686,7 +688,8 @@
                 <tr>
 
                     <td>
-                        <input type="checkbox" name="tech_lan_3" value="LARAVEL" id="tech_3" class="tech_lan_3">
+                        <input type="checkbox" name="tech_lan_3" value="LARAVEL" id="tech_3" class="tech_lan_3"
+                        onclick="radiobtnHandler()">
                         <label for="tech_lan_3">LARAVEL</label>
 
                         <input type="radio" value="beginer" name="tech_lan_3" id="tech_lan_3_B" class="tech_lan_3">
@@ -704,7 +707,8 @@
 
                 <tr>
                     <td>
-                        <input type="checkbox" name="tech_lan_4" value="ORACLE" id="tech_4" class="tech_lan_4">
+                        <input type="checkbox" name="tech_lan_4" value="ORACLE" id="tech_4" class="tech_lan_4"
+                        onclick="radiobtnHandler()">
                         <label for="tech_lan_4">ORACLE</label>
 
                         <input type="radio" value="Beginer" name="tech_lan_4" id="tech_lan_4_B" class="tech_lan_4">
@@ -748,16 +752,20 @@
                     <td>
                         <div style="display: flex;gap: 10px;">
                             <div><label for="name">Name</label>
-                                <input type="text" name="ref_name" id="ref_name_1" class="reference_name">
-                                <div><span id="error-msg-ref-1"></span></div>
+                                <input type="text" name="ref_name" id="ref_name_1" class="reference_name reference_required">
+                                <div><span class="error-msg-ref-1"></span></div>
                             </div>
                             <div><label for="contact_number">Contact Number</label>
-                                <input type="text" name="ref_contact" class="ref-field_1 reference_contact">
+                                <input type="text" name="ref_contact" class="ref-field_1 reference_contact reference_required">
                                 <!-- <div><span class="error-msg"></span></div> -->
+                                <div><span class="error-msg-ref-1"></span></div>
+
                             </div>
                             <div> <label for="relation">Relation</label>
-                                <input type="text" name="ref_relation" class="ref-field_1 reference_relation">
+                                <input type="text" name="ref_relation" class="ref-field_1 reference_relation reference_required">
                                 <!-- <div><span class="error-msg"></span></div> -->
+                                <div><span class="error-msg-ref-1"></span></div>
+
                             </div>
                         </div>
 
@@ -774,19 +782,25 @@
                         <div style="display: flex;gap: 10px;">
                             <div>
                                 <label for="name">Name</label>
-                                <input type="text" name="ref_name" id="ref_name_2" class="reference_name">
-                                <div><span id="error-msg-ref-2"></span></div>
+                                <input type="text" name="ref_name" id="ref_name_2" class="reference_name reference_required">
+                                <!-- <div><span id="error-msg-ref-2"></span></div> -->
+                                <div><span class="error-msg-ref-1"></span></div>
+
                             </div>
                             <div>
                                 <label for="contact_number">Contact Number</label>
-                                <input type="text" name="ref_contact" class="ref-field_2 reference_contact">
+                                <input type="text" name="ref_contact" class="ref-field_2 reference_contact reference_required">
                                 <!-- <div><span></span></div> -->
+                                <div><span class="error-msg-ref-1"></span></div>
+
 
                             </div>
                             <div>
                                 <label for="relation">Relation</label>
-                                <input type="text" name="ref_relation" class="ref-field_2 reference_relation">
+                                <input type="text" name="ref_relation" class="ref-field_2 reference_relation reference_required">
                                 <!-- <div><span></span></div> -->
+                                <div><span class="error-msg-ref-1"></span></div>
+
                             </div>
                         </div>
 
@@ -795,14 +809,14 @@
 
                 </tr>
 
-                <div style="display: flex;gap: 15px;margin-bottom: 1.5rem;">
+                <!-- <div style="display: flex;gap: 15px;margin-bottom: 1.5rem;">
 
                     <button class="ref_add_btn" style="padding: 5px 7px;background-color: rgb(235, 188, 128);"
                         onclick="add_ref_row()">+</button>
                     <button class="ref_remove_btn" style="padding:5px 9px;background-color: rgb(235, 188, 128);"
                         onclick="remove_ref_row()">-</button>
 
-                </div>
+                </div> -->
 
             </table>
 
@@ -931,6 +945,10 @@
 
 
         var allInput = document.getElementsByClassName("require-field-basic");
+
+        var allInput_reference = document.getElementsByClassName("reference_required");
+        var err_references = document.getElementsByClassName("error-msg-ref-1");
+
         var erro_msg = document.getElementsByClassName("error-msg");
 
         var err_msg_edu = document.getElementsByClassName("error-msg-education");
@@ -1139,6 +1157,9 @@
                     err_msg_edu[i].style.color = "red";
                     flag = 0;
 
+                }
+                else{
+                    err_msg_edu[i].innerHTML = "";
                 }
 
             }
@@ -1442,6 +1463,60 @@
 
         let language_count = 1;
 
+        function clickHandler(){
+            var lan_hindi = document.getElementById("lan_hindi").checked;
+            var lan_english = document.getElementById("lan_english").checked;
+            var lan_gujarati = document.getElementById("lan_gujarati").checked;
+
+
+            console.log(lan_hindi);
+
+            if(lan_hindi){
+                var lan_h_r = document.getElementById("lan_h_r").disabled= false;
+                var lan_h_w = document.getElementById("lan_h_w").disabled= false;
+                var lan_h_s = document.getElementById("lan_h_s").disabled= false;
+
+            }
+            else{
+                var lan_h_r = document.getElementById("lan_h_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_h_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_h_s").disabled= true;
+
+
+             }
+
+            if(lan_english)
+            {
+               var lan_h_r = document.getElementById("lan_e_r").disabled= false;
+               var lan_h_w = document.getElementById("lan_e_w").disabled= false;
+               var lan_h_s = document.getElementById("lan_e_s").disabled= false;
+
+             }
+              else
+            {
+                var lan_h_r = document.getElementById("lan_e_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_e_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_e_s").disabled= true;
+
+
+             }
+
+            if(lan_gujarati)
+            {
+                var lan_h_r = document.getElementById("lan_g_r").disabled= false;
+                var lan_h_w = document.getElementById("lan_g_w").disabled= false;
+                var lan_h_s = document.getElementById("lan_g_s").disabled= false;
+
+            }
+            else
+            {
+                var lan_h_r = document.getElementById("lan_g_r").disabled= true;
+                var lan_h_w = document.getElementById("lan_g_w").disabled= true;
+                var lan_h_s = document.getElementById("lan_g_s").disabled= true;
+           }
+
+}
+
         function language_known_next_handler() {
 
             if (language_count === 1) {
@@ -1452,6 +1527,10 @@
                 var lan_english = document.querySelectorAll('.english');
                 var lan_hindi = document.querySelectorAll('.hindi');
                 var lan_gujarati = document.querySelectorAll('.gujarati');
+
+
+
+                
 
 
 
@@ -1578,15 +1657,7 @@
 
 
 
-
             }
-
-
-
-
-
-
-
 
 
         }
@@ -1606,6 +1677,78 @@
         }
 
         let tech_count = 1;
+
+
+        function radiobtnHandler(){
+
+             var tech_1 = document.getElementById("tech_1").checked;
+             var tech_2 = document.getElementById("tech_2").checked;
+             var tech_3 = document.getElementById("tech_3").checked;
+             var tech_4 = document.getElementById("tech_4").checked;
+
+         if(tech_1)
+         {
+             var lan_h_r = document.getElementById("tech_lan_1_B").disabled= false;
+             var lan_h_w = document.getElementById("tech_lan_1_M").disabled= false;
+             var lan_h_s = document.getElementById("tech_lan_1_E").disabled= false;
+
+
+         }else{
+             var lan_h_r = document.getElementById("tech_lan_1_B").disabled= true;
+             var lan_h_w = document.getElementById("tech_lan_1_M").disabled= true;
+             var lan_h_s = document.getElementById("tech_lan_1_E").disabled= true;
+
+          }
+
+
+          if(tech_2)
+          {
+            var lan_h_r = document.getElementById("tech_lan_2_B").disabled= false;
+            var lan_h_w = document.getElementById("tech_lan_2_M").disabled= false;
+            var lan_h_s = document.getElementById("tech_lan_2_E").disabled= false;
+
+
+          }else{
+                var lan_h_r = document.getElementById("tech_lan_2_B").disabled= true;
+                var lan_h_w = document.getElementById("tech_lan_2_M").disabled= true;
+                var lan_h_s = document.getElementById("tech_lan_2_E").disabled= true;
+
+          }
+
+
+        if(tech_3)
+         {
+            var lan_h_r = document.getElementById("tech_lan_3_B").disabled= false;
+            var lan_h_w = document.getElementById("tech_lan_3_M").disabled= false;
+            var lan_h_s = document.getElementById("tech_lan_3_E").disabled= false;
+
+
+         }else{
+            var lan_h_r = document.getElementById("tech_lan_3_B").disabled= true;
+            var lan_h_w = document.getElementById("tech_lan_3_M").disabled= true;
+            var lan_h_s = document.getElementById("tech_lan_3_E").disabled= true;
+
+          }
+
+
+        if(tech_4){
+           var lan_h_r = document.getElementById("tech_lan_4_B").disabled= false;
+           var lan_h_w = document.getElementById("tech_lan_4_M").disabled= false;
+           var lan_h_s = document.getElementById("tech_lan_4_E").disabled= false;
+
+
+        }else{
+        var lan_h_r = document.getElementById("tech_lan_4_B").disabled= true;
+        var lan_h_w = document.getElementById("tech_lan_4_M").disabled= true;
+        var lan_h_s = document.getElementById("tech_lan_4_E").disabled= true;
+
+    }
+    
+
+
+
+
+} 
 
 
         function technology_known_next_handler() {
@@ -1768,6 +1911,8 @@
                 refe_relation = document.querySelectorAll('.reference_relation');
 
 
+
+
                 let ref1 = [];
                 let ref2 = [];
                 let ref3 = [];
@@ -1788,7 +1933,24 @@
 
                 };
 
+                let flag =1;
 
+
+                // for (let i = 0; i < allInput_reference.length; i++) {
+                // if (allInput_reference[i].value.trim() === "") {
+                //     err_references[i].innerHTML = "Please fill the field !!";
+                //     err_references[i].style.color = "red";
+                //     flag = 0;
+                //     return;
+                  
+                // }
+                // else {
+                //     err_references[i].innerHTML = "";
+                // }
+
+
+                
+               
                 fetch("/form/savereferences",
                     {
                         headers: {
@@ -1801,7 +1963,12 @@
                     .then(function (res) { console.log(res) })
                     .catch(function (res) { console.log(res) })
 
+               
+
+                
+
                 reference_count++;
+                
             }
 
             else {
@@ -1810,6 +1977,10 @@
                 var refe_name = document.querySelectorAll('.reference_name');
                 var refe_contact = document.querySelectorAll('.reference_contact');
                 var refe_relation = document.querySelectorAll('.reference_relation');
+
+
+
+           
 
 
                 let ref1 = [];
@@ -1854,7 +2025,6 @@
 
 
 
-
         }
 
         function preference_detail_prev_handler() {
@@ -1864,9 +2034,6 @@
         }
 
         function preferences_insert() {
-
-
-
 
 
             submit_section.style.display = "block";
